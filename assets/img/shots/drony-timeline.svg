@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 364" width="800" height="364" font-size="14" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">
+<style>.bg{fill:#ffffff}.ink{fill:#1f2328}.muted{fill:#59636e}.grid{stroke:#d1d9e0}.lane{fill:#f6f8fa}.bar{fill:#0969da}.bar-text{fill:#ffffff}.note{fill:#9a6700}.bad{fill:#cf222e}</style>
+<rect class="bg" width="800" height="364" rx="10"/>
+<text class="ink" x="112" y="24" font-weight="600" font-size="15">Tuesday 5 Nov</text>
+<line class="grid" x1="112.0" y1="56" x2="112.0" y2="304" stroke-width="1"/>
+<text class="muted" x="112.0" y="48" text-anchor="middle" font-size="12">10:00</text>
+<line class="grid" x1="210.7" y1="56" x2="210.7" y2="304" stroke-width="1"/>
+<text class="muted" x="210.7" y="48" text-anchor="middle" font-size="12">11:00</text>
+<line class="grid" x1="309.3" y1="56" x2="309.3" y2="304" stroke-width="1"/>
+<text class="muted" x="309.3" y="48" text-anchor="middle" font-size="12">12:00</text>
+<line class="grid" x1="408.0" y1="56" x2="408.0" y2="304" stroke-width="1"/>
+<text class="muted" x="408.0" y="48" text-anchor="middle" font-size="12">13:00</text>
+<line class="grid" x1="506.7" y1="56" x2="506.7" y2="304" stroke-width="1"/>
+<text class="muted" x="506.7" y="48" text-anchor="middle" font-size="12">14:00</text>
+<text class="ink" x="583" y="24" font-weight="600" font-size="15">Wednesday 6 Nov</text>
+<line class="grid" x1="582.7" y1="56" x2="582.7" y2="304" stroke-width="1"/>
+<text class="muted" x="582.7" y="48" text-anchor="middle" font-size="12">08:00</text>
+<line class="grid" x1="681.3" y1="56" x2="681.3" y2="304" stroke-width="1"/>
+<text class="muted" x="681.3" y="48" text-anchor="middle" font-size="12">09:00</text>
+<line class="grid" x1="780.0" y1="56" x2="780.0" y2="304" stroke-width="1"/>
+<text class="muted" x="780.0" y="48" text-anchor="middle" font-size="12">10:00</text>
+<line class="grid" x1="544.7" y1="56" x2="544.7" y2="308" stroke-width="1.5" stroke-dasharray="4 4"/>
+<text class="muted" x="544.7" y="320" text-anchor="middle" font-size="11" font-style="italic">overnight</text>
+<rect class="lane" x="104" y="68" width="684" height="52" rx="6"/>
+<text class="ink" x="16" y="91" font-weight="600">alpha</text>
+<text class="muted" x="16" y="109" font-size="12">Lisbon</text>
+<rect class="lane" x="104" y="128" width="684" height="52" rx="6"/>
+<text class="ink" x="16" y="151" font-weight="600">bravo</text>
+<text class="muted" x="16" y="169" font-size="12">Lisbon</text>
+<rect class="lane" x="104" y="188" width="684" height="52" rx="6"/>
+<text class="ink" x="16" y="211" font-weight="600">charlie</text>
+<text class="muted" x="16" y="229" font-size="12">Porto</text>
+<rect class="lane" x="104" y="248" width="684" height="52" rx="6"/>
+<text class="ink" x="16" y="271" font-weight="600">delta</text>
+<text class="muted" x="16" y="289" font-size="12">Lisbon</text>
+<rect class="bar" x="112.0" y="80" width="65.8" height="28" rx="5"><title>ana: leaves 10:00, back 10:40</title></rect>
+<text class="bar-text" x="144.9" y="99" text-anchor="middle" font-weight="600" font-size="13">ana</text>
+<text class="muted" x="185.8" y="99" font-size="12">10:00–10:40</text>
+<rect class="bar" x="136.7" y="200" width="98.7" height="28" rx="5"><title>bruno: leaves 10:15, back 11:15</title></rect>
+<text class="bar-text" x="186.0" y="219" text-anchor="middle" font-weight="600" font-size="13">bruno</text>
+<text class="muted" x="243.3" y="219" font-size="12">10:15–11:15</text>
+<rect class="bar" x="161.3" y="140" width="49.3" height="28" rx="5"><title>carla: leaves 10:30, back 11:00</title></rect>
+<text class="bar-text" x="186.0" y="159" text-anchor="middle" font-weight="600" font-size="13">carla</text>
+<text class="muted" x="218.7" y="159" font-size="12">10:30–11:00</text>
+<rect class="bar" x="582.7" y="80" width="74.0" height="28" rx="5"><title>eva: leaves 08:00, back 08:45</title></rect>
+<text class="bar-text" x="619.7" y="99" text-anchor="middle" font-weight="600" font-size="13">eva</text>
+<text class="muted" x="664.7" y="99" font-size="12">08:00–08:45</text>
+<text class="note" x="498.7" y="99" text-anchor="end" font-size="12">ordered 19:30, too late for today →</text>
+<rect class="bar" x="309.3" y="260" width="148.0" height="28" rx="5"><title>filipe: leaves 12:00, back 13:30</title></rect>
+<text class="bar-text" x="383.3" y="279" text-anchor="middle" font-weight="600" font-size="13">filipe</text>
+<text class="muted" x="465.3" y="279" font-size="12">12:00–13:30</text>
+<text class="bad" x="16" y="334" font-weight="600">✕ duarte cancelled</text>
+<text class="muted" x="170" y="334">no drone works in Faro</text>
+</svg>

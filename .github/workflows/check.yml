@@ -1,0 +1,20 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: JavaScript parses
+        run: |
+          node --check assets/js/data.js
+          node --check assets/js/app.js
+      - name: Every referenced file exists
+        run: node scripts/check-assets.js

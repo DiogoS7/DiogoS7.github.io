@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diogo Santos · Business Analyst & Developer</title>
+<meta name="description" content="Interactive CV of Diogo Santos, business analyst and developer in Lisbon. Requirements, BPMN and Microsoft and Salesforce platforms, plus my own software projects.">
+<meta name="author" content="Diogo Santos">
+<link rel="canonical" href="https://diogos7.github.io/">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1d4ed8">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Diogo Santos · Business Analyst & Developer">
+<meta property="og:description" content="Interactive CV of Diogo Santos, business analyst and developer in Lisbon. Requirements, BPMN and Microsoft and Salesforce platforms, plus my own software projects.">
+<meta property="og:url" content="https://diogos7.github.io/">
+<meta property="og:image" content="https://diogos7.github.io/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">~/diogo</a>
+    <div class="navlinks" id="navlinks">
+      <a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </div>
+    <button class="themebtn" id="themebtn" type="button">Theme</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="tiles" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="eyebrow">Business analyst &amp; developer · Lisbon area</div>
+    <h1>Diogo Santos</h1>
+    <p class="lede">I turn business needs into clear requirements, process models and tested solutions on Dynamics 365, Power Platform and Salesforce. Outside client work I build my own software, like PetOS, a Django CRM and a drone delivery scheduler in Python.</p>
+    <div class="cta">
+      <a class="btn primary" href="#journey">Start the launch ↓</a>
+      <a class="btn" href="https://github.com/DiogoS7" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/diogo-santos-b22801243/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<main>
+  <section id="journey" class="journey">
+    <div class="wrap jhead">
+      <div class="eyebrow">Mission log · Mercury → interstellar</div>
+      <h2>A trip across the solar system</h2>
+      <p class="sub">Every milestone is a planet, from Mercury in 2019 out to interstellar space. Scroll to fly the rocket outward, or tap a planet to jump to it.</p>
+    </div>
+    <div class="wrap jgrid">
+      <div class="scene" id="scene">
+        <canvas id="sky" aria-hidden="true"></canvas>
+        <div class="hud hud-top"><span>Stage <b id="hudStage">1</b>/<b id="hudTotal">1</b></span><span id="hudYear">2019</span></div>
+        <div class="hud hud-bottom"><span class="dist"><span>From the Sun</span> <b id="hudAlt">0.39 AU</b></span><div class="sysmap" id="sysmap" aria-label="Planets"></div></div>
+        <div class="hud hint" id="hint">Scroll to fly ↓</div>
+      </div>
+      <ol class="ms-list" id="mslist"></ol>
+    </div>
+    <div class="wrap langrow">
+      <h3 class="langh">Languages</h3>
+      <div class="langs" id="langs"></div>
+    </div>
+  </section>
+
+  <section id="skills"><div class="wrap">
+    <h2>Skills</h2>
+    <p class="sub">Tap any skill to filter my projects and the milestones on my journey. Dots show proficiency, from 1 (learning) to 5 (use daily); the number counts the roles and projects where I've used it.</p>
+    <div class="skillgroups" id="skillgroups"></div>
+    <div class="filterbar" id="filterbar" aria-live="polite"></div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2>Projects &amp; repositories</h2>
+    <p class="sub">Selected work from GitHub and beyond.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="grid" id="grid"></div>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <h2>Contact</h2>
+    <p class="sub">Open to new job opportunities and interesting collaborations.</p>
+    <div class="contact" id="contactlist"></div>
+  </div></section>
+</main>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-labelledby="lbtitle">
+  <div class="lb-inner">
+    <div class="lb-head"><h3 id="lbtitle"></h3><span class="lb-count" id="lbcount"></span><button class="lb-close" id="lbclose" type="button">Close</button></div>
+    <div class="lb-stage" id="lbstage">
+      <img id="lbimg" alt="">
+      <button class="lb-nav prev" id="lbprev" type="button" aria-label="Previous screenshot">‹</button>
+      <button class="lb-nav next" id="lbnext" type="button" aria-label="Next screenshot">›</button>
+    </div>
+    <p class="lb-cap" id="lbcap"></p>
+    <div class="lb-thumbs" id="lbthumbs"></div>
+  </div>
+</div>
+<footer><div class="wrap">© 2026 Diogo Santos · Built by hand, no frameworks</div></footer>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
