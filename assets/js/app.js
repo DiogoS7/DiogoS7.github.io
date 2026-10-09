@@ -103,7 +103,11 @@ document.addEventListener("click", e => {
 /* theme toggle */
 const root = document.documentElement;
 function currentDark(){ const d = root.dataset.theme; return d ? d==="dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
-function labelTheme(){ $("#themebtn").textContent = currentDark() ? "Light mode" : "Dark mode"; }
+function labelTheme(){
+  const b = $("#themebtn"), dark = currentDark(), label = dark ? "Light mode" : "Dark mode";
+  b.innerHTML = `<span class="ti" aria-hidden="true">${dark ? "☀" : "☾"}</span><span class="tl">${label}</span>`;
+  b.setAttribute("aria-label", label);
+}
 $("#themebtn").addEventListener("click", () => {
   root.dataset.theme = currentDark() ? "light" : "dark";
   try{ localStorage.setItem("cv-theme", root.dataset.theme); }catch(_){}
