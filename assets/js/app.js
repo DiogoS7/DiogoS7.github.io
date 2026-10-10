@@ -54,7 +54,7 @@ function coverHTML(p){
   }
   return `<button type="button" class="cover" data-proj="${i}" aria-label="View ${p.shots.length} screenshot${p.shots.length>1?'s':''} of ${esc(p.name)}">
     ${p.shots.map((s,k)=>`<img src="${esc(s.src)}" alt="" loading="lazy" class="${k===0?'on':''}">`).join("")}
-    ${p.shots.length>1?`<span class="dots">${p.shots.map((_,k)=>`<i class="${k===0?'on':''}"></i>`).join("")}</span>`:''}
+    ${p.shots.length>1 && p.shots.length<=8?`<span class="dots">${p.shots.map((_,k)=>`<i class="${k===0?'on':''}"></i>`).join("")}</span>`:''}
     <span class="badge">${p.shots.length>1?p.shots.length+' screenshots':'View image'} ↗</span></button>`;
 }
 
