@@ -54,6 +54,8 @@ Almost every change happens in `assets/js/data.js`:
 
 The flight has room for up to nine planets plus interstellar space.
 
+After editing any CSS or JS file, change the `?v=` number on its `<link>` or `<script>` tag in `index.html` (today's date works well). That makes visitors' browsers load the new version instead of a saved copy.
+
 ## Run it locally
 
 Open `index.html` in a browser. Or serve the folder so paths behave exactly as on GitHub Pages:

@@ -8,7 +8,7 @@ const refs = new Set();
 for (const text of sources) {
   for (const m of text.matchAll(/(?:src|href)=["']([^"'#]+)["']|src:\s*"([^"]+)"/g)) {
     const ref = m[1] || m[2];
-    if (!/^(https?:|mailto:|tel:|data:)/.test(ref)) refs.add(ref);
+    if (!/^(https?:|mailto:|tel:|data:)/.test(ref)) refs.add(ref.split("?")[0]);
   }
 }
 const missing = [...refs].filter(ref => !fs.existsSync(path.join(root, ref)));
