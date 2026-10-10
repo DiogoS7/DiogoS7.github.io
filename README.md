@@ -16,7 +16,7 @@ Scroll and a rocket flies from Mercury out to interstellar space. Every planet i
 
 | Projects | Screenshot gallery |
 | --- | --- |
-| ![Project cards](docs/screenshots/projects.png) | ![Gallery open on PetOS](docs/screenshots/gallery.png) |
+| ![Project cards](docs/screenshots/projects.png) | ![Gallery open on Django CRM](docs/screenshots/gallery.png) |
 
 | Dark theme | Phone |
 | --- | --- |

@@ -154,6 +154,8 @@ details ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
 .ms-type.work{background:var(--cobalt-soft);color:var(--cobalt)}
 .ms-type.edu{background:var(--ochre-soft);color:var(--ochre)}
 .ms-type.project{background:var(--line);color:var(--ink)}
+.ms-type.soon{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+.ms.ms-soon{border-style:dashed;background:transparent}
 .ms-type.next{background:var(--cobalt);color:var(--bg)}
 .ms h3{margin:6px 0 2px;font:700 21px/1.2 var(--display);letter-spacing:-.01em;text-wrap:balance}
 .ms .org{color:var(--muted);font-size:15px}

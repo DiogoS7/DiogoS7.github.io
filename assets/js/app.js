@@ -58,13 +58,13 @@ function coverHTML(p){
     <span class="badge">${p.shots.length>1?p.shots.length+' screenshots':'View image'} ↗</span></button>`;
 }
 
-const TYPE_LABEL = {edu:"Education", work:"Work", project:"Project", next:"Destination"};
+const TYPE_LABEL = {edu:"Education", work:"Work", project:"Project", soon:"Coming soon", next:"Destination"};
 function renderJourney(){
   $("#mslist").innerHTML = CV.journey.map((m,i) => {
     const proj = m.project ? CV.projects.find(p=>p.name===m.project) : null;
     const shot = proj && proj.shots && proj.shots.length ? coverHTML(proj) : "";
-    const dim = m.type!=="next" && !matches(m.skills||[]);
-    return `<li class="ms ${m.type==='next'?'ms-next':''} ${shot?'has-cover':''} ${dim?'dim':''}" data-i="${i}">
+    const dim = m.type!=="next" && m.type!=="soon" && !matches(m.skills||[]);
+    return `<li class="ms ${m.type==='next'?'ms-next':''} ${m.type==='soon'?'ms-soon':''} ${shot?'has-cover':''} ${dim?'dim':''}" data-i="${i}">
       ${shot}
       <div class="ms-when"><span class="ms-planet"><i style="background:${planetOf(i).c[0]};box-shadow:inset -3px -3px 0 ${planetOf(i).c[1]}"></i>${esc(planetOf(i).n)}</span><span class="ms-type ${m.type}">${TYPE_LABEL[m.type]}</span>${esc(m.when)}${m.current?' <span class="now">Current</span>':''}</div>
       <h3>${esc(m.title)}</h3>
@@ -254,6 +254,8 @@ const Flight = (() => {
     const p = planetOf(i), c = planetPos(i), x = sx(c.x), y = sy(c.y), r = p.r*S;
     if (y < -r*4 || y > H + r*4) return;
     hits.push({x,y,r:Math.max(r,14),i});
+    const soon = CV.journey[i].type==="soon";
+    if (soon){ ctx.save(); ctx.globalAlpha=.3; }
     if (p.star){
       const g = ctx.createRadialGradient(x,y,0,x,y,r*7); g.addColorStop(0,"rgba(220,232,255,.9)"); g.addColorStop(1,"rgba(220,232,255,0)");
       ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,r*7,0,6.283); ctx.fill();
@@ -287,12 +289,13 @@ const Flight = (() => {
       if (p.rings) ring(true);
       if (p.earth){ const a = now/1600; ctx.fillStyle="#d6d9e2"; ctx.beginPath(); ctx.arc(x+Math.cos(a)*r*1.8, y+Math.sin(a)*r*.7, r*.27, 0, 6.283); ctx.fill(); }
     }
+    if (soon){ ctx.restore(); ctx.setLineDash([3,4]); ctx.strokeStyle="rgba(200,215,255,.6)"; ctx.lineWidth=1.2; ctx.beginPath(); ctx.arc(x,y,r+6,0,6.283); ctx.stroke(); ctx.setLineDash([]); }
     const isOn = i===active, j = CV.journey[i];
     if (isOn && !reduce){ ctx.strokeStyle="rgba(242,196,109,.8)"; ctx.globalAlpha=.4+.4*Math.sin(now/260); ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(x,y,(p.rings?r*2.2:r)+10,0,6.283); ctx.stroke(); ctx.globalAlpha=1; }
     ctx.textAlign="center"; ctx.font=`600 ${Math.round(10.5*Math.min(S,1.2))}px 'JetBrains Mono', monospace`;
     const ly = y + (p.rings ? r*1.1 : r) + 16;
     ctx.fillStyle = isOn ? "#f2c46d" : "rgba(220,230,255,.8)"; ctx.fillText(p.n.toUpperCase(), x, ly);
-    ctx.fillStyle = "rgba(190,205,240,.6)"; ctx.fillText(j.type==="next" ? "NEXT" : j.year, x, ly+13);
+    ctx.fillStyle = "rgba(190,205,240,.6)"; ctx.fillText(j.type==="next" ? "NEXT" : j.type==="soon" ? "SOON" : j.year, x, ly+13);
   }
   function drawRocket(x,y,ang,thrust){
     ctx.save(); ctx.translate(x,y); ctx.rotate(ang); const s = Math.max(S*.95,.7); ctx.scale(s,s);
