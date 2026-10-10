@@ -80,8 +80,8 @@ function renderJourney(){
 function renderContact(){
   $("#contactlist").innerHTML = CV.contact.map((c,i) => `
     <div class="cline"><div style="min-width:0"><small>${esc(c.label)} ${c.placeholder?PH:''}</small>
-      <span>${c.href?`<a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.value)}</a>`:esc(c.value)}</span></div>
-      <button class="copy" type="button" data-copy="${i}">Copy</button></div>`).join("");
+      <span class="${c.pending?'pending':''}">${c.href?`<a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.value)}</a>`:esc(c.value)}</span></div>
+      ${c.pending?'':`<button class="copy" type="button" data-copy="${i}">Copy</button>`}</div>`).join("");
 }
 
 function renderAll(){ renderSkills(); renderProjects(); renderJourney(); }

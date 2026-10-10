@@ -119,6 +119,7 @@ const CV = {
     { label:"Email", value:"diogofasantos7@gmail.com" },
     { label:"LinkedIn", value:"linkedin.com/in/diogo-santos-b22801243", href:"https://www.linkedin.com/in/diogo-santos-b22801243/" },
     { label:"GitHub", value:"github.com/DiogoS7", href:"https://github.com/DiogoS7" },
+    { label:"Trailhead", value:"salesforce.com/trailblazer/diogosantos00", href:"https://www.salesforce.com/trailblazer/diogosantos00" },
   ],
 };
 /* =================================== */
