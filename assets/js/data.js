@@ -71,6 +71,7 @@ const CV = {
       skills:["Python","Django","Bootstrap","SQL","HTML & CSS","Testing & QA","Git & GitHub"],
       context:"Personal project · Django 5.2",
       shots:[
+        {src:"assets/img/shots/crm-cover.webp", caption:"Django CRM: move customers through a sales pipeline and keep every call, email and meeting in one place"},
         {src:"assets/img/shots/crm-home.webp", caption:"Home dashboard with the pipeline broken down by stage"},
         {src:"assets/img/shots/crm-customers.webp", caption:"Customer list with status filters and sortable columns"},
         {src:"assets/img/shots/crm-customer.webp", caption:"Customer record with the stage path and activity timeline"},
@@ -84,6 +85,7 @@ const CV = {
       skills:["Python","Testing & QA","Git & GitHub"],
       context:"FCUL group project · 2019, refactored 2026",
       shots:[
+        {src:"assets/img/shots/drony-cover.webp", caption:"dronyDeliv: schedules parcel deliveries across a drone fleet"},
         {src:"assets/img/shots/drony-timeline.svg", caption:"Example run: 4 drones, 6 orders. Which drone flew which order, and when"},
       ],
       details:["Built in 2019 as the group project for Programação 1 at FCUL","Handles battery range, payload weight, operating hours and service areas","Refactored in 2026 into a tested, installable package with CI"] },
@@ -93,6 +95,7 @@ const CV = {
       skills:["HTML & CSS","JavaScript","Git & GitHub"],
       context:"Personal project · 2026",
       shots:[
+        {src:"assets/img/shots/cv-cover.webp", caption:"Interactive CV: a career across the solar system"},
         {src:"assets/img/shots/cv-hero.webp", caption:"Header with intro, links and quick stats"},
         {src:"assets/img/shots/cv-journey.webp", caption:"Journey: the rocket reaches Jupiter, my first consulting role"},
         {src:"assets/img/shots/cv-journey-crm.webp", caption:"Journey: Django CRM at Mars, with its screenshot cover"},
