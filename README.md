@@ -1,3 +1,5 @@
+[![Interactive CV: a career across the solar system](docs/social-preview.png)](https://diogos7.github.io)
+
 # Interactive CV
 
 [![Checks](https://github.com/DiogoS7/DiogoS7.github.io/actions/workflows/check.yml/badge.svg)](https://github.com/DiogoS7/DiogoS7.github.io/actions/workflows/check.yml)
