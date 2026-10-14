@@ -108,7 +108,7 @@ const CV = {
       details:["Canvas animation of a rocket flying from Mercury to interstellar space as you scroll","Skill filters dim projects and milestones that don't use the skill","Screenshot galleries with keyboard and swipe support","Light and dark themes; works from phone to desktop; no frameworks or build step"] },
   ],
   journey: [
-    { type:"edu", when:"Sep 2019 – Jul 2020", year:"2019", title:"Information Technology", org:"Faculty of Sciences, University of Lisbon (FCUL)",
+    { type:"edu", when:"Sep 2019 – Jul 2020", year:"2019", title:"Bachelor's in Information Technology", org:"Faculty of Sciences, University of Lisbon (FCUL)",
       points:[], skills:["C / C++","Python"] },
     { type:"project", when:"2019", year:"2019", title:"dronyDeliv", org:"Group project for Programação 1 at FCUL",
       points:["Python scheduler that assigns parcel orders to a drone fleet","Refactored in 2026 into a tested package with CI"], skills:["Python","Testing & QA","Git & GitHub"], project:"dronyDeliv" },
