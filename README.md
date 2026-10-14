@@ -54,7 +54,7 @@ Almost every change happens in `assets/js/data.js`:
 - **Screenshots**: save them as WebP in `assets/img/shots/` (about 1400px wide is plenty) and list them under the project's `shots`.
 - **Skills**: add them to a group in `skills`, with a level from 1 to 5. Use the same name in a project's or milestone's `skills` so the filter finds it.
 
-The flight has room for up to nine planets plus interstellar space.
+The route has 13 stops before interstellar space: the eight planets, then Pluto, Haumea, Makemake, Eris and Sedna. Interstellar space is always the last stop, so a new milestone goes just before it and gets the next free planet.
 
 After editing any CSS or JS file, change the `?v=` number on its `<link>` or `<script>` tag in `index.html` (today's date works well). That makes visitors' browsers load the new version instead of a saved copy.
 

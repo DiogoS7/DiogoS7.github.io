@@ -194,6 +194,11 @@ const PLANETS = [
   {n:"Saturn",  au:9.54,r:29, c:["#f6e6bb","#c4a05c"], rings:1},
   {n:"Uranus",  au:19.2,r:21, c:["#d3f6f7","#5bb3c1"], uring:1},
   {n:"Neptune", au:30.1,r:20, c:["#86a8ff","#22389a"]},
+  {n:"Pluto",    au:39.5,r:9,  c:["#f2dcc4","#94735a"], heart:1},
+  {n:"Haumea",   au:43.1,r:8,  c:["#f4f1ec","#9a958e"], elong:1},
+  {n:"Makemake", au:45.8,r:9,  c:["#f0b48a","#8c4b2a"]},
+  {n:"Eris",     au:67.7,r:9,  c:["#f7f8fb","#a7adbb"]},
+  {n:"Sedna",    au:83.8,r:8,  c:["#ff9a7a","#8f2416"]},
   {n:"Interstellar", au:120, r:6, c:["#ffffff","#bcd0ff"], star:1},
 ];
 const planetOf = i => i >= CV.journey.length-1 ? PLANETS[PLANETS.length-1] : PLANETS[Math.min(i, PLANETS.length-2)];
@@ -202,7 +207,7 @@ const Flight = (() => {
   let W=0, H=0, S=1, dpr=1, stars=[], rocks=[], parts=[], cards=[], hits=[];
   let target=0, pos=0, vel=0, active=-1, last=performance.now(), camX=0, camY=0, camInit=false;
   const N = () => CV.journey.length;
-  const XS = [0,.75,-.65,.55,-.45,.6,-.7,.5,-.35,0];
+  const XS = [0,.75,-.65,.55,-.45,.6,-.7,.5,-.35,.65,-.55,.45,-.6,.4,0];
   function resize(){
     const r = scene.getBoundingClientRect(); dpr = Math.min(devicePixelRatio||1,2);
     W=r.width; H=r.height; S=Math.max(Math.min(W,H)/420,.72);
@@ -211,7 +216,7 @@ const Flight = (() => {
     if (!rocks.length) rocks = Array.from({length:70}, () => ({u:Math.random(), v:Math.random(), r:Math.random()*2.2+.6}));
   }
   const SP = () => H*.5;
-  function way(i){ const AX = Math.min(W*.2, 170); return {x:(XS[i%XS.length]||0)*AX, y:-i*SP()}; }
+  function way(i){ const AX = Math.min(W*.2, 170), k = i >= N()-1 ? 0 : (XS[i%XS.length]||0); return {x:k*AX, y:-i*SP()}; }
   function planetPos(i){
     const w = way(i), p = planetOf(i), side = w.x >= 0 ? 1 : -1;
     if (p.star) return {x:w.x, y:w.y - 46*S};
@@ -271,6 +276,7 @@ const Flight = (() => {
         ctx.beginPath(); ctx.ellipse(0,0,r*1.6,r*.4,0, front?0:Math.PI, front?Math.PI:2*Math.PI); ctx.stroke(); ctx.restore(); };
       if (p.rings) ring(false);
       if (p.uring){ ctx.save(); ctx.translate(x,y); ctx.rotate(1.35); ctx.strokeStyle="rgba(200,240,245,.35)"; ctx.lineWidth=1.2; ctx.beginPath(); ctx.ellipse(0,0,r*1.7,r*.35,0,Math.PI,2*Math.PI); ctx.stroke(); ctx.restore(); }
+      if (p.elong){ ctx.save(); ctx.translate(x,y); ctx.scale(1.55,.68); ctx.translate(-x,-y); }
       const glow = ctx.createRadialGradient(x,y,r*.9,x,y,r*1.6); glow.addColorStop(0,p.c[0]+"55"); glow.addColorStop(1,p.c[0]+"00");
       ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(x,y,r*1.6,0,6.283); ctx.fill();
       const g = ctx.createRadialGradient(x-r*.4,y-r*.4,r*.1,x,y,r*1.05); g.addColorStop(0,p.c[0]); g.addColorStop(1,p.c[1]);
@@ -286,6 +292,7 @@ const Flight = (() => {
       if (p.heart){ ctx.fillStyle="rgba(255,245,235,.85)"; ctx.beginPath(); ctx.arc(x+r*.1,y+r*.15,r*.32,0,6.283); ctx.arc(x+r*.42,y+r*.1,r*.26,0,6.283); ctx.fill(); }
       ctx.fillStyle="rgba(0,0,10,.35)"; ctx.beginPath(); ctx.arc(x+r*.35,y+r*.35,r*1.05,0,6.283); ctx.fill();
       ctx.restore();
+      if (p.elong) ctx.restore();
       if (p.rings) ring(true);
       if (p.earth){ const a = now/1600; ctx.fillStyle="#d6d9e2"; ctx.beginPath(); ctx.arc(x+Math.cos(a)*r*1.8, y+Math.sin(a)*r*.7, r*.27, 0, 6.283); ctx.fill(); }
     }

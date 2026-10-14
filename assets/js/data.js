@@ -128,6 +128,8 @@ const CV = {
     { type:"project", when:"Oct 2026", year:"2026", title:"Launchpad", org:"Personal project · Salesforce Platform",
       points:["Employee onboarding app for a fictional consultancy, from role preparation to independence","Business analysis first: AS-IS and TO-BE processes, 25 requirements, 12 user stories","Built declaratively: custom objects, Flows, validation rules, sharing, reports and a dashboard"],
       skills:["Salesforce","Salesforce Flow","Lightning App Builder","Requirements analysis","Functional specs","Testing & QA","Git & GitHub"], project:"Launchpad" },
+    { type:"soon", when:"In progress", year:"2026", title:"Next project in progress",
+      org:"This stop fills in once the first version is out.", points:[], skills:[] },
     { type:"next", when:"Next", year:"Next", title:"Next mission: your team?", org:"Open to new job opportunities and interesting collaborations.",
       points:[], skills:[] },
   ],
