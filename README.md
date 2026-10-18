@@ -51,6 +51,7 @@ Almost every change happens in `assets/js/data.js`:
 
 - **New job or course**: add an entry to `journey`, in date order. The planet is assigned automatically from its position (Mercury first, interstellar space always last).
 - **New project**: add it to `projects`, and add a `journey` entry with `project:"<same name>"` if it should be a stop on the flight.
+- **Releases**: a project shipped in versions (like Houston) gets a `releases` list instead of `shots`, newest first. Each release has a `version`, `name`, `date`, `url`, `summary`, `notes` and its own `shots`. The card and journey stop show the latest release, and the gallery lets visitors switch between releases.
 - **Screenshots**: save them as WebP in `assets/img/shots/` (about 1400px wide is plenty) and list them under the project's `shots`.
 - **Skills**: add them to a group in `skills`, with a level from 1 to 5. Use the same name in a project's or milestone's `skills` so the filter finds it.
 

@@ -122,6 +122,29 @@ details summary::before{content:"+ ";font-family:var(--mono)}
 details[open] summary::before{content:"− "}
 details ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
 .empty{color:var(--muted);font-style:italic}
+/* releases */
+.rel-badge{font:600 12px var(--mono);color:var(--ochre);background:var(--ochre-soft);border-radius:4px;padding:1px 7px;margin-left:auto;white-space:nowrap}
+.rels ol{list-style:none;margin:10px 0 0;padding:0 0 0 14px;border-left:2px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.rels ol>li{position:relative}
+.rels ol>li::before{content:"";position:absolute;left:-20px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--cobalt)}
+.rels ol>li:first-child::before{background:var(--cobalt)}
+.rel-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;font-size:14px}
+.rel-head b{font:700 15px var(--display);color:var(--ink)}
+.rel-latest{font:600 11px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--cobalt);background:var(--cobalt-soft);border-radius:4px;padding:1px 6px}
+.rel-date{font:12px var(--mono);color:var(--muted);margin-left:auto}
+.rels p{margin:4px 0 0;font-size:14px}
+.rels ul{margin:4px 0 0}
+.rel-links{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px;font:600 13px var(--body)}
+.rel-links a{text-decoration:none}
+.rel-open{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:4px 10px;font:600 13px var(--body);cursor:zoom-in}
+.rel-open:hover{border-color:var(--cobalt)}
+.ms-rels{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.ms-rels span{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.lb-rels{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:-4px}
+.lb-rels button{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;padding:4px 12px;font:600 13px var(--body);cursor:pointer}
+.lb-rels button small{font:400 11px var(--mono);opacity:.8}
+.lb-rels button[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:var(--bg)}
+.lb-rels a{margin-left:auto;font:600 13px var(--body);text-decoration:none}
 
 /* journey */
 .journey{padding-bottom:40px}

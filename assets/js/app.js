@@ -5,6 +5,19 @@ const PH = '<span class="ph">Placeholder</span>';
 const active = new Set();
 let tab = "All";
 
+/* projects shipped in releases show their latest release's screenshots by default */
+CV.projects.forEach(p => { if (p.releases && p.releases.length && !p.shots) p.shots = p.releases[0].shots; });
+const relLabel = r => `${r.version}${r.name?' · '+r.name:''}`;
+function releasesHTML(p, i){
+  if (!p.releases || !p.releases.length) return "";
+  return `<details class="rels"><summary>Release history (${p.releases.length})</summary><ol>
+    ${p.releases.map((r,k)=>`<li><div class="rel-head"><b>${esc(relLabel(r))}</b>${k===0?'<span class="rel-latest">Latest</span>':''}<span class="rel-date">${esc(r.date||"")}</span></div>
+      ${r.summary?`<p>${esc(r.summary)}</p>`:''}
+      ${r.notes&&r.notes.length?`<ul>${r.notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul>`:''}
+      <div class="rel-links">${r.shots&&r.shots.length?`<button type="button" class="rel-open" data-proj="${i}" data-rel="${k}">${r.shots.length} screenshots</button>`:''}${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">Release notes ↗</a>`:''}</div></li>`).join("")}
+  </ol></details>`;
+}
+
 const usage = {};
 [...CV.projects, ...CV.journey.filter(j=>j.type!=="project")].forEach(p => (p.skills||[]).forEach(s => usage[s] = (usage[s]||0)+1));
 
@@ -37,9 +50,10 @@ function renderProjects(){
   $("#grid").innerHTML = list.length ? list.map(p => `
     <article class="card ${matches(p.skills)?'':'dim'}">
       ${coverHTML(p)}
-      <div class="top"><h3>${esc(p.name)}</h3>${p.placeholder?PH:''}</div>
+      <div class="top"><h3>${esc(p.name)}</h3>${p.placeholder?PH:''}${p.releases&&p.releases.length?`<span class="rel-badge">${esc(p.releases[0].version)}</span>`:''}</div>
       ${p.repo?`<div class="repo">${esc(p.repo)}</div>`:''}
       <p>${esc(p.desc)}</p>
+      ${releasesHTML(p, CV.projects.indexOf(p))}
       ${p.details?`<details><summary>Details</summary><ul>${p.details.map(d=>`<li>${esc(d)}</li>`).join("")}</ul></details>`:''}
       <div class="tags">${p.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
       <div class="meta"><span>${esc(p.context||"")}</span>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">View repo ↗</a>`:'<span>Repo coming soon</span>'}</div>
@@ -70,6 +84,7 @@ function renderJourney(){
       <h3>${esc(m.title)}</h3>
       <div class="org">${esc(m.org)}</div>
       ${m.points.length?`<ul>${m.points.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:''}
+      ${proj&&proj.releases&&proj.releases.length?`<div class="ms-rels"><span>Releases</span>${proj.releases.map((r,k)=>`<button type="button" class="rel-open" data-proj="${CV.projects.indexOf(proj)}" data-rel="${k}">${esc(relLabel(r))}${k===0?' · latest':''}</button>`).join("")}</div>`:''}
       ${m.type==='next'?'<a class="btn primary" href="#contact">Get in touch →</a>':''}
     </li>`;
   }).join("");
@@ -142,9 +157,9 @@ document.addEventListener("pointerover", e => { const c = e.target.closest(".cov
 document.addEventListener("focusin", e => { const c = e.target.closest(".cover[data-proj]"); c ? startCycle(c) : stopCycle(); });
 
 /* lightbox */
-const lb = $("#lb"); let lbProj = null, lbIdx = 0, lastFocus = null;
+const lb = $("#lb"); let lbProj = null, lbShots = [], lbRel = 0, lbIdx = 0, lastFocus = null;
 function lbShow(k, dir){
-  const shots = lbProj.shots; lbIdx = (k + shots.length) % shots.length;
+  const shots = lbShots; lbIdx = (k + shots.length) % shots.length;
   const img = $("#lbimg"); const s = shots[lbIdx];
   img.className = ""; void img.offsetWidth;
   img.src = s.src; img.alt = s.caption;
@@ -154,12 +169,22 @@ function lbShow(k, dir){
   $("#lbprev").hidden = $("#lbnext").hidden = shots.length<2;
   $("#lbthumbs").querySelectorAll("button").forEach((b,j)=>b.setAttribute("aria-current", j===lbIdx));
 }
-function lbOpen(p){
-  lbProj = p; lastFocus = document.activeElement; stopCycle();
-  $("#lbtitle").textContent = p.name;
-  $("#lbthumbs").innerHTML = p.shots.length>1 ? p.shots.map((s,j)=>`<button type="button" data-k="${j}" aria-label="${esc(s.caption)}"><img src="${esc(s.src)}" alt=""></button>`).join("") : "";
-  lbShow(0); lb.hidden = false; document.body.style.overflow = "hidden"; $("#lbclose").focus();
+function lbLoad(rel){
+  const p = lbProj, rs = p.releases || [];
+  lbRel = rs.length ? Math.max(0, Math.min(rel||0, rs.length-1)) : 0;
+  lbShots = rs.length ? rs[lbRel].shots : p.shots;
+  $("#lbtitle").textContent = rs.length ? `${p.name} · ${relLabel(rs[lbRel])}` : p.name;
+  $("#lbrels").innerHTML = rs.length>1 || (rs.length && rs[0].url) ? rs.map((r,k)=>`<button type="button" data-rel="${k}" aria-pressed="${k===lbRel}">${esc(relLabel(r))}${r.date?` <small>${esc(r.date)}</small>`:''}${k===0?' <small>latest</small>':''}</button>`).join("")
+    + (rs[lbRel] && rs[lbRel].url ? `<a href="${esc(rs[lbRel].url)}" target="_blank" rel="noopener">Release notes ↗</a>` : "") : "";
+  $("#lbrels").hidden = !rs.length;
+  $("#lbthumbs").innerHTML = lbShots.length>1 ? lbShots.map((s,j)=>`<button type="button" data-k="${j}" aria-label="${esc(s.caption)}"><img src="${esc(s.src)}" alt=""></button>`).join("") : "";
+  lbShow(0);
 }
+function lbOpen(p, rel){
+  lbProj = p; lastFocus = document.activeElement; stopCycle();
+  lbLoad(rel); lb.hidden = false; document.body.style.overflow = "hidden"; $("#lbclose").focus();
+}
+$("#lbrels").addEventListener("click", e => { const b = e.target.closest("button[data-rel]"); if (b) lbLoad(+b.dataset.rel); });
 function lbCloseFn(){ lb.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
 $("#lbclose").addEventListener("click", lbCloseFn);
 $("#lbprev").addEventListener("click", ()=>lbShow(lbIdx-1,-1));
@@ -176,6 +201,8 @@ let tx = null;
 $("#lbstage").addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, {passive:true});
 $("#lbstage").addEventListener("touchend", e => { if (tx===null) return; const dx = e.changedTouches[0].clientX - tx; tx = null; if (Math.abs(dx)>40) dx<0 ? lbShow(lbIdx+1,1) : lbShow(lbIdx-1,-1); });
 document.addEventListener("click", e => {
+  const ro = e.target.closest(".rel-open[data-proj]");
+  if (ro){ lbOpen(CV.projects[+ro.dataset.proj], +ro.dataset.rel); return; }
   const c = e.target.closest(".cover[data-proj], .ms-shot[data-proj]");
   if (c){ lbOpen(CV.projects[+c.dataset.proj]); return; }
   const card = e.target.closest(".card, .ms.has-cover");
