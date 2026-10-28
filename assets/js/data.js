@@ -58,7 +58,7 @@ const CV = {
           summary:"Consultant staffing: timesheets, approvals, utilisation and a bench forecast.",
           notes:["Canvas app with Home, My Timesheet and Bench Board","Timesheet approval, Friday reminder and weekly bench alert flows","Power BI report on utilisation, bench forecast and skills, embedded in the app"],
           shots:[
-            {src:"assets/img/shots/houston-cover.webp", caption:"Houston: consultant staffing, timesheets and bench forecasting on Microsoft Power Platform"},
+            {src:"assets/img/shots/houston-cover.webp?v=20261028", caption:"Houston: consultant staffing, timesheets and bench forecasting on Microsoft Power Platform"},
             {src:"assets/img/shots/houston-v1-home.webp", caption:"Home: the week at a glance, a live Power BI tile and in-app notifications"},
             {src:"assets/img/shots/houston-v1-timesheet.webp", caption:"My Timesheet: log hours per engagement and submit the week for approval"},
             {src:"assets/img/shots/houston-v1-bench.webp", caption:"Bench Board: allocation per consultant for the next 6 weeks against their target"},
