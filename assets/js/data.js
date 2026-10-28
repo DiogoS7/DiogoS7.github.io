@@ -59,12 +59,12 @@ const CV = {
           notes:["Canvas app with Home, My Timesheet and Bench Board","Timesheet approval, Friday reminder and weekly bench alert flows","Power BI report on utilisation, bench forecast and skills, embedded in the app"],
           shots:[
             {src:"assets/img/shots/houston-cover.webp?v=20261028", caption:"Houston: consultant staffing, timesheets and bench forecasting on Microsoft Power Platform"},
-            {src:"assets/img/shots/houston-v1-home.webp", caption:"Home: the week at a glance, a live Power BI tile and in-app notifications"},
-            {src:"assets/img/shots/houston-v1-timesheet.webp", caption:"My Timesheet: log hours per engagement and submit the week for approval"},
-            {src:"assets/img/shots/houston-v1-bench.webp", caption:"Bench Board: allocation per consultant for the next 6 weeks against their target"},
-            {src:"assets/img/shots/houston-v1-bi-utilisation.webp", caption:"Power BI: billable utilisation against target, by week and by consultant"},
-            {src:"assets/img/shots/houston-v1-bi-forecast.webp", caption:"Power BI: bench forecast for the next 8 weeks, coloured like the app"},
-            {src:"assets/img/shots/houston-v1-bi-skills.webp", caption:"Power BI: skill supply against demand from open engagements"},
+            {src:"assets/img/shots/houston-v1-home.webp?v=20261028", caption:"Home: the week at a glance, a live Power BI tile and in-app notifications"},
+            {src:"assets/img/shots/houston-v1-timesheet.webp?v=20261028", caption:"My Timesheet: log hours per engagement and submit the week for approval"},
+            {src:"assets/img/shots/houston-v1-bench.webp?v=20261028", caption:"Bench Board: allocation per consultant for the next 6 weeks against their target"},
+            {src:"assets/img/shots/houston-v1-bi-utilisation.webp?v=20261028", caption:"Power BI: billable utilisation against target, by week and by consultant"},
+            {src:"assets/img/shots/houston-v1-bi-forecast.webp?v=20261028", caption:"Power BI: bench forecast for the next 8 weeks, coloured like the app"},
+            {src:"assets/img/shots/houston-v1-bi-skills.webp?v=20261028", caption:"Power BI: skill supply against demand from open engagements"},
             {src:"assets/img/shots/houston-v1-flow-approval.webp", caption:"Power Automate: the timesheet approval flow, from submit to decision"},
             {src:"assets/img/shots/houston-v1-approval.webp", caption:"The approval request a manager answers in Power Automate"},
             {src:"assets/img/shots/houston-v1-flow-bench.webp", caption:"Power Automate: the Monday bench alert flow for managers"}
