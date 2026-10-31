@@ -144,7 +144,7 @@ const CV = {
     { type:"work", when:"Mar 2026 – Apr 2026", year:"2026", title:"Business Analyst Consultant", org:"Winning Scientific Management · Lisbon",
       points:["Gathered and documented business requirements in stakeholder meetings","Defined functional requirements, business rules, use cases and process flows for a new system","Modelled business processes in low- and high-fidelity BPMN diagrams","Managed requirements, user stories and tasks in Jira and Azure DevOps","Kept stakeholders and the development team aligned throughout delivery"],
       skills:["Requirements gathering","Functional analysis","User stories","BPMN","Stakeholder management","Documentation & traceability","Jira & Confluence","Azure DevOps"] },
-    { type:"work", when:"Jun 2026 – Present", year:"2026", current:true, title:"Quality Assurance Consultant", org:"Noesis · Lisbon",
+    { type:"work", when:"Jun 2026 – Present", year:"2026", current:true, title:"Junior QA Consultant", org:"Noesis · Lisbon",
       points:["Analyse business and functional requirements and define acceptance criteria","Create and run test cases to validate requirements and solution quality","Track bugs through the testing lifecycle in ALM tools","Build metrics and reports for project monitoring","Work with business and technical teams in an Agile setup, and keep documentation and traceability up to date"],
       skills:["Requirements gathering","Functional analysis","User stories","Stakeholder management","Documentation & traceability","Testing & QA","Bug tracking","Metrics & reporting","ALM tools","Agile delivery"] },
     { type:"project", when:"Oct 2026", year:"2026", title:"Launchpad", org:"Personal project · Salesforce Platform",
