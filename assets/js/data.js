@@ -104,6 +104,20 @@ const CV = {
         {src:"assets/img/shots/launchpad-flow.webp", caption:"Record-triggered Flow that generates the tasks when a plan starts"}
       ],
       details:["AS-IS and TO-BE process analysis, 6 pain points traced to 25 requirements and 12 user stories","5 custom objects, 7 record-triggered Flows (including scheduled reminders) and 7 validation rules","Private sharing with Flow-created shares, 3 permission sets and a custom permission","Two Lightning Web Components on Lightning Data Service and GraphQL, no Apex: Mission Control and the Command Centre","Reports and a dynamic HR dashboard; tabbed record pages with Dynamic Forms, a Path and one-click quick actions","All metadata in the repo with CI validation; roadmap: Agentforce agent (v2) and Claude features (v3)"] },
+    { name:"Pixelburg", category:"Software", repo:"DiogoS7/Pixelburg",
+      url:"https://github.com/DiogoS7/Pixelburg",
+      desc:"A Linux desktop you walk around. Your character enters a church to open the browser, a library for files or a tavern for music, and smoke from the chimney shows which apps are still running.",
+      skills:["Testing & QA","Automated testing & CI","Git & GitHub"],
+      context:"Personal project · Godot · 2026",
+      shots:[
+        {src:"assets/img/shots/pixelburg-demo.gif", caption:"Pixelburg: walk through the town and enter a building to open its app"},
+        {src:"assets/img/shots/pixelburg-day.webp", caption:"The town at midday: five buildings open the browser, files, settings, terminal and music"},
+        {src:"assets/img/shots/pixelburg-night.webp", caption:"The town at night: the day and night cycle follows your real clock"},
+        {src:"assets/img/shots/pixelburg-workspaces.gif", caption:"Each building owns a Sway workspace, so leaving keeps the app running and returning brings back the same window"},
+        {src:"assets/img/shots/pixelburg-fast-travel.gif", caption:"Fast travel: type a few letters and press Enter to open an app without walking there"},
+        {src:"assets/img/shots/pixelburg-mail.gif", caption:"Notifications arrive as letters, delivered by a mail carrier"}
+      ],
+      details:["Runs as a fullscreen Godot app inside Sway, which handles the windows while the game decides what to launch","The town is generated from a JSON file: add a building and it appears with a road to its door","Status bar for battery, volume and Wi-Fi, plus a system menu in the game","No asset files: every sprite and the font are painted by code, and the GIFs come from a built-in encoder","115 automated checks on GitHub Actions, including a real Sway desktop with Firefox in a container","Tested in that container but not yet on physical hardware"] },
     { name:"Django CRM", category:"Web", repo:"DiogoS7/Django-CRM",
       url:"https://github.com/DiogoS7/Django-CRM",
       desc:"Customer relationship manager in Django. Tracks customers through a sales pipeline and logs every call, email and meeting.",
