@@ -228,7 +228,10 @@ const PLANETS = [
   {n:"Sedna",    au:83.8,r:8,  c:["#ff9a7a","#8f2416"]},
   {n:"Interstellar", au:120, r:6, c:["#ffffff","#bcd0ff"], star:1},
 ];
-const planetOf = i => i >= CV.journey.length-1 ? PLANETS[PLANETS.length-1] : PLANETS[Math.min(i, PLANETS.length-2)];
+/* every stop takes the next planet; interstellar space only comes once the route has passed Neptune */
+const NEPTUNE = PLANETS.findIndex(p=>p.n==="Neptune");
+const planetOf = i => (i >= CV.journey.length-1 && i > NEPTUNE) ? PLANETS[PLANETS.length-1] : PLANETS[Math.min(i, PLANETS.length-2)];
+{ const rl = $("#routeLabel"); if (rl) rl.textContent = "Mission log · Mercury → " + planetOf(CV.journey.length-1).n; }
 const Flight = (() => {
   const cv = $("#sky"), ctx = cv.getContext("2d"), scene = $("#scene");
   let W=0, H=0, S=1, dpr=1, stars=[], rocks=[], parts=[], cards=[], hits=[];
@@ -243,7 +246,7 @@ const Flight = (() => {
     if (!rocks.length) rocks = Array.from({length:70}, () => ({u:Math.random(), v:Math.random(), r:Math.random()*2.2+.6}));
   }
   const SP = () => H*.5;
-  function way(i){ const AX = Math.min(W*.2, 170), k = i >= N()-1 ? 0 : (XS[i%XS.length]||0); return {x:k*AX, y:-i*SP()}; }
+  function way(i){ const AX = Math.min(W*.2, 170), k = planetOf(i).star ? 0 : (XS[i%XS.length]||0); return {x:k*AX, y:-i*SP()}; }
   function planetPos(i){
     const w = way(i), p = planetOf(i), side = w.x >= 0 ? 1 : -1;
     if (p.star) return {x:w.x, y:w.y - 46*S};

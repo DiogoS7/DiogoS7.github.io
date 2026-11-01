@@ -6,7 +6,7 @@
 
 My CV as a website: **[diogos7.github.io](https://diogos7.github.io)**
 
-Scroll and a rocket flies from Mercury out to interstellar space. Every planet is a milestone in my education or career. Pick a skill to see where I've used it, and open any project to browse its screenshots.
+Scroll and a rocket flies out from Mercury, one planet per milestone, towards the next mission. Every planet is a milestone in my education or career. Pick a skill to see where I've used it, and open any project to browse its screenshots.
 
 ![Journey across the solar system](docs/screenshots/journey.png)
 
@@ -49,13 +49,13 @@ docs/screenshots/       screenshots for this README
 
 Almost every change happens in `assets/js/data.js`:
 
-- **New job or course**: add an entry to `journey`, in date order. The planet is assigned automatically from its position (Mercury first, interstellar space always last).
+- **New job or course**: add an entry to `journey`, in date order. The planet is assigned automatically from its position, starting at Mercury.
 - **New project**: add it to `projects`. Give it `demo:"<url>"` to show a Live demo link next to View repo. Projects aren't stops on the journey, which is kept for education and work.
 - **Releases**: a project shipped in versions (like Houston) gets a `releases` list instead of `shots`, newest first. Each release has a `version`, `name`, `date`, `url`, `summary`, `notes` and its own `shots`. The card and journey stop show the latest release, and the gallery lets visitors switch between releases.
 - **Screenshots**: save them as WebP in `assets/img/shots/` (about 1400px wide is plenty) and list them under the project's `shots`.
 - **Skills**: add them to a group in `skills`, with a level from 1 to 5. Use the same name in a project's or milestone's `skills` so the filter finds it.
 
-The route has 13 stops before interstellar space: the eight planets, then Pluto, Haumea, Makemake, Eris and Sedna. Interstellar space is always the last stop, so a new milestone goes just before it and gets the next free planet.
+The last stop is always the open “Next mission: your team?” card, on the next planet out (Saturn today). Each new milestone goes just before it, so the next mission moves one planet further. The route runs Mercury to Neptune, then Pluto, Haumea, Makemake, Eris and Sedna, and interstellar space only appears once the journey has passed Neptune.
 
 After editing any CSS or JS file, change the `?v=` number on its `<link>` or `<script>` tag in `index.html` (today's date works well). That makes visitors' browsers load the new version instead of a saved copy.
 
