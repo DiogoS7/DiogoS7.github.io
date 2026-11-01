@@ -6,7 +6,7 @@
 
 My CV as a website: **[diogos7.github.io](https://diogos7.github.io)**
 
-Scroll and a rocket flies from Mercury out to interstellar space. Every planet is a milestone in my education, work or projects. Pick a skill to see where I've used it, and open any project to browse its screenshots.
+Scroll and a rocket flies from Mercury out to interstellar space. Every planet is a milestone in my education or career. Pick a skill to see where I've used it, and open any project to browse its screenshots.
 
 ![Journey across the solar system](docs/screenshots/journey.png)
 
@@ -18,7 +18,7 @@ Scroll and a rocket flies from Mercury out to interstellar space. Every planet i
 
 | Projects | Screenshot gallery |
 | --- | --- |
-| ![Project cards](docs/screenshots/projects.png) | ![Gallery open on Houston](docs/screenshots/gallery.png) |
+| ![Project cards](docs/screenshots/projects.png) | ![Gallery open on Prism](docs/screenshots/gallery.png) |
 
 | Dark theme | Phone |
 | --- | --- |
@@ -50,7 +50,7 @@ docs/screenshots/       screenshots for this README
 Almost every change happens in `assets/js/data.js`:
 
 - **New job or course**: add an entry to `journey`, in date order. The planet is assigned automatically from its position (Mercury first, interstellar space always last).
-- **New project**: add it to `projects`, and add a `journey` entry with `project:"<same name>"` if it should be a stop on the flight.
+- **New project**: add it to `projects`. Give it `demo:"<url>"` to show a Live demo link next to View repo. Projects aren't stops on the journey, which is kept for education and work.
 - **Releases**: a project shipped in versions (like Houston) gets a `releases` list instead of `shots`, newest first. Each release has a `version`, `name`, `date`, `url`, `summary`, `notes` and its own `shots`. The card and journey stop show the latest release, and the gallery lets visitors switch between releases.
 - **Screenshots**: save them as WebP in `assets/img/shots/` (about 1400px wide is plenty) and list them under the project's `shots`.
 - **Skills**: add them to a group in `skills`, with a level from 1 to 5. Use the same name in a project's or milestone's `skills` so the filter finds it.

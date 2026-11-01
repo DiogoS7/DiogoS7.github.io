@@ -56,7 +56,7 @@ function renderProjects(){
       ${releasesHTML(p, CV.projects.indexOf(p))}
       ${p.details?`<details><summary>Details</summary><ul>${p.details.map(d=>`<li>${esc(d)}</li>`).join("")}</ul></details>`:''}
       <div class="tags">${p.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
-      <div class="meta"><span>${esc(p.context||"")}</span>${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">View repo ↗</a>`:'<span>Repo coming soon</span>'}</div>
+      <div class="meta"><span>${esc(p.context||"")}</span><span class="links">${p.demo?`<a href="${esc(p.demo)}" target="_blank" rel="noopener">Live demo ↗</a>`:''}${p.url?`<a href="${esc(p.url)}" target="_blank" rel="noopener">View repo ↗</a>`:'<span>Repo coming soon</span>'}</span></div>
     </article>`).join("") : `<p class="empty">No projects in this category yet.</p>`;
 }
 
