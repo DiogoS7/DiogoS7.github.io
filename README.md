@@ -18,7 +18,7 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 
 | Projects | Screenshot gallery |
 | --- | --- |
-| ![Project cards](docs/screenshots/projects.png) | ![Gallery open on QualityView](docs/screenshots/gallery.png) |
+| ![Project cards](docs/screenshots/projects.png) | ![Gallery open on LevelUp](docs/screenshots/gallery.png) |
 
 | Dark theme | Phone |
 | --- | --- |
