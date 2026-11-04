@@ -73,3 +73,7 @@ python -m http.server 8000
 The repository is named `DiogoS7.github.io`, so GitHub Pages serves it at https://diogos7.github.io from the `main` branch. Every push to `main` updates the live site within a minute or two.
 
 `.github/workflows/check.yml` runs on every push: it checks the JavaScript parses and that every image the site references exists.
+
+## License
+
+[MIT](LICENSE) © Diogo Santos
