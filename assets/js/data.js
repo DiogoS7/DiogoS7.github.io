@@ -34,6 +34,7 @@ const CV = {
     { group: "Programming & web", items: [
       { name:"Python", level:4 },
       { name:"SQL", level:4 },
+      { name:"Data analysis (pandas)", level:3 },
       { name:"JavaScript", level:3 },
       { name:"React", level:3 },
       { name:"Django", level:4 },
@@ -50,7 +51,25 @@ const CV = {
   ],
   projects: [
     /* newest release first */
-    { name:"LevelUp", category:"Web", repo:"DiogoS7/LevelUp",
+    { name:"Ledger", category:"Data", repo:"DiogoS7/Ledger",
+      url:"https://github.com/DiogoS7/Ledger", demo:"https://diogos7.github.io/Ledger/",
+      desc:"Card fraud and transaction analytics in Python and SQL. A year of card payments at a fictional Portuguese bank: where the money goes, where fraud hides, and six fraud rules written in SQL, scored against the chargebacks and combined into one risk score with a block tier and a review tier.",
+      skills:["Python","SQL","Data analysis (pandas)","Metrics & reporting","Functional analysis","Testing & QA","Automated testing & CI","JavaScript","Git & GitHub"],
+      context:"Personal project · Python & SQL · 2026",
+      shots:[
+        {src:"assets/img/shots/ledger-cover.webp", caption:"Ledger: card fraud and transaction analytics"},
+        {src:"assets/img/shots/ledger-overview.webp", caption:"The report: headline numbers and key findings"},
+        {src:"assets/img/shots/ledger-spending.webp", caption:"Spending: monthly volume, categories, contactless adoption, when and who pays"},
+        {src:"assets/img/shots/ledger-fraud.webp", caption:"Fraud: monthly losses, channels, time to report and the hotspots"},
+        {src:"assets/img/shots/ledger-rules.webp", caption:"Rule scorecard with precision, recall, value caught and lift, next to each rule's SQL"},
+        {src:"assets/img/shots/ledger-threshold.webp", caption:"Pick the threshold: precision against fraud value caught as the block score moves"},
+        {src:"assets/img/shots/ledger-tuning.webp", caption:"Tuning a single rule: loosen it and it catches more fraud, and more genuine customers"},
+        {src:"assets/img/shots/ledger-queue.webp", caption:"Alert queue: the highest-risk payments with the evidence each rule found"},
+        {src:"assets/img/shots/ledger-dark.webp", caption:"Dark theme"},
+        {src:"assets/img/shots/ledger-mobile.webp", caption:"Mobile"}
+      ],
+      details:["Synthetic, seeded SQLite database: 430,000 payments, 1,500 customers, 2,100 cards, with card testing, cloned cards and account takeovers planted in it","Ten SQL analysis queries: volume, category mix, channel trends, weekday-hour heatmap, segments, fraud rate in basis points, hotspots and time to report","Six fraud rules as SQL window-function queries (velocity, test-then-spend, impossible travel, amount spike, night-time high-risk, first high-risk merchant abroad)","Rules scored against chargebacks in pandas: blocking at score 60 stops 77% of fraud value at 90% precision; a review queue lifts it to 94%","Interactive report with a threshold explorer, tuning curves and the SQL behind every rule; plain JavaScript SVG charts, light and dark","17 pytest tests: every rule on hand-made transactions, plus end-to-end checks","GitHub Actions tests, builds the database and the report, and deploys it to GitHub Pages"] },
+{ name:"LevelUp", category:"Web", repo:"DiogoS7/LevelUp",
       url:"https://github.com/DiogoS7/LevelUp", demo:"https://diogos7.github.io/LevelUp/",
       desc:"Gamified skills platform for pharma field sales teams. Reps close the skill gaps that matter through short quests and earn XP, levels, streaks and badges, while team leads and L&D see where the team lacks skills and how ready it is for the next launch.",
       skills:["React","JavaScript","HTML & CSS","Requirements gathering","Functional analysis","Metrics & reporting","Testing & QA","Automated testing & CI","Git & GitHub"],
