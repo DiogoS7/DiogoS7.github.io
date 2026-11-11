@@ -209,10 +209,11 @@ const CV = {
       skills:["Python","Testing & QA","Automated testing & CI","Git & GitHub"],
       context:"FCUL group project · 2019, refactored 2026",
       shots:[
-        {src:"assets/img/shots/drony-cover.webp", caption:"dronyDeliv: schedules parcel deliveries across a drone fleet"},
-        {src:"assets/img/shots/drony-timeline.svg", caption:"Example run: 4 drones, 6 orders. Which drone flew which order, and when"},
+        {src:"assets/img/shots/drony-cover.webp?v=2", caption:"dronyDeliv: schedules parcel deliveries across a drone fleet"},
+        {src:"assets/img/shots/drony-how-it-works.webp", caption:"How it works: two files go in (the drone fleet and new orders), it picks a drone for each order, and two files come out (the delivery timetable and the updated fleet)"},
+        {src:"assets/img/shots/drony-example-schedule.webp", caption:"Example run for a made-up Solenne Biosciences fleet: 4 drones, 6 orders. Each row is a drone, each bar one delivery there and back"},
       ],
-      details:["Built in 2019 as the group project for Programação 1 at FCUL","Handles battery range, payload weight, operating hours and service areas","Refactored in 2026 into a tested, installable package with CI"] },
+      details:["Built in 2019 as the group project for Programação 1 at FCUL","Handles battery range, payload weight, operating hours and service areas","Sample run: 5 parcels delivered, 1 moved to the next morning because the trip would end after drones stop flying, and 1 cancelled because no drone works in Faro","Refactored in 2026 into a tested, installable package with CI"] },
   ],
   journey: [
     { type:"edu", when:"Sep 2019 – Jul 2020", year:"2019", title:"Bachelor in Information Technology", org:"Faculty of Sciences, University of Lisbon (FCUL)",
