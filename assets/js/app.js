@@ -5,8 +5,9 @@ const PH = '<span class="ph">Placeholder</span>';
 const active = new Set();
 let tab = "All";
 
-/* projects shipped in releases show their latest release's screenshots by default */
-CV.projects.forEach(p => { if (p.releases && p.releases.length && !p.shots) p.shots = p.releases[0].shots; });
+/* projects shipped in releases open on their latest release, or on the one named in `featured` */
+const featuredRel = p => { const rs = p.releases || []; const k = rs.findIndex(r => r.version === p.featured); return k < 0 ? 0 : k; };
+CV.projects.forEach(p => { if (p.releases && p.releases.length && !p.shots) p.shots = p.releases[featuredRel(p)].shots; });
 const relLabel = r => `${r.version}${r.name?' · '+r.name:''}`;
 function releasesHTML(p, i){
   if (!p.releases || !p.releases.length) return "";
@@ -182,7 +183,7 @@ function lbLoad(rel){
 }
 function lbOpen(p, rel){
   lbProj = p; lastFocus = document.activeElement; stopCycle();
-  lbLoad(rel); lb.hidden = false; document.body.style.overflow = "hidden"; $("#lbclose").focus();
+  lbLoad(rel === undefined || isNaN(rel) ? featuredRel(p) : rel); lb.hidden = false; document.body.style.overflow = "hidden"; $("#lbclose").focus();
 }
 $("#lbrels").addEventListener("click", e => { const b = e.target.closest("button[data-rel]"); if (b) lbLoad(+b.dataset.rel); });
 function lbCloseFn(){ lb.hidden = true; document.body.style.overflow = ""; if (lastFocus) lastFocus.focus(); }

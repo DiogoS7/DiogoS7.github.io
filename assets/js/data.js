@@ -73,6 +73,7 @@ const CV = {
       desc:"A learning app for a sales team that feels like a game. Reps learn the skills that matter a few minutes at a time, through short lessons, quizzes and practice tasks that earn XP, streaks and badges, while managers see which skills the team is missing and who is ready for the next launch. v2 adds a Course studio: AI drafts a course from a company document, a person checks every part against the source, once approved it becomes a quest, and managers see which questions the team gets wrong.",
       skills:["React","JavaScript","HTML & CSS","Requirements gathering","Functional analysis","User stories","Agile delivery","Metrics & reporting","Testing & QA","Automated testing & CI","Git & GitHub"],
       context:"Personal project · React · 2026",
+      featured:"v1.0",
       releases:[
         { version:"v2.1", name:"Insights and the Claude option", date:"Nov 2026", url:"https://github.com/DiogoS7/LevelUp/releases/tag/v2.1",
           summary:"Managers see which questions the team gets wrong, reviewers fix wording before approving, and anyone can draft from their own text with Claude.",
