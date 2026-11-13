@@ -24,9 +24,9 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 | --- | --- |
 | ![Dark theme](docs/screenshots/projects-dark.png) | <img src="docs/screenshots/phone-journey.png" alt="Phone layout" width="300"> |
 
-**Ask my CV**: a built-in command, then a question answered by the AI with a link to the repo it used.
-
-![Ask my CV terminal: whoami, then "Which projects show Salesforce skills?" answered with a link to Launchpad](docs/screenshots/ask.png)
+| Ask my CV | More on GitHub |
+| --- | --- |
+| ![Ask my CV terminal: whoami, then "Which projects show Salesforce skills?" answered with a link to Launchpad](docs/screenshots/ask.png) | ![More on GitHub tab: an AI-written card for Ledger-MCP](docs/screenshots/more-on-github.png) |
 
 ## Features
 
