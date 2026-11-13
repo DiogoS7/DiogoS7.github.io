@@ -65,6 +65,7 @@ const CV = {
         {src:"assets/img/shots/ledger-try.webp", caption:"Try it: a slider to choose how strict the bank should be, with the outcome in plain words"},
         {src:"assets/img/shots/ledger-examples.webp", caption:"Real examples: what the checks flagged and what really happened"},
         {src:"assets/img/shots/ledger-technical.webp", caption:"For the technical reader: scorecard, tuning and the SQL behind each check"},
+        {src:"assets/img/shots/ledger-mcp.webp", caption:"Ledger MCP in the MCP Inspector: explain_payment shows why payment 406064 was blocked (two checks, 65 points) and that it really was fraud"},
         {src:"assets/img/shots/ledger-dark.webp", caption:"Dark theme"},
         {src:"assets/img/shots/ledger-mobile.webp", caption:"Mobile"}
       ],
