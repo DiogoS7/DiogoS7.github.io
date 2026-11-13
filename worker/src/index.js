@@ -54,6 +54,8 @@ export default {
         messages: [{ role: "system", content: SYSTEM }, ...messages],
         stream: true,
         max_tokens: 600, // a few sentences; keeps each answer cheap on the daily allowance
+        // answer directly: on reasoning models, thinking tokens count against max_tokens and the allowance
+        chat_template_kwargs: { enable_thinking: false },
       });
     } catch (err) {
       console.error("ai.run failed", err?.message);

@@ -20,12 +20,12 @@
     "What is LevelUp?",
   ];
 
-  /* the tiny Markdown subset the assistant is asked to use: links, bold, "- " bullets */
+  /* the tiny Markdown subset the assistant is asked to use: links, bold, "- " or "* " bullets */
   function md(text){
     return esc(text)
       .replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
       .replace(/\*\*([^*\n]+)\*\*/g, "<b>$1</b>")
-      .replace(/^- /gm, "• ");
+      .replace(/^[ \t]*[-*][ \t]+/gm, "• ");
   }
 
   function print(html, cls = ""){
