@@ -1,0 +1,60 @@
+name: Index GitHub repos
+
+# Once a week, an AI model on Cloudflare Workers AI (free daily allowance) reads the README of
+# every public repo and writes a short card for it into assets/data/repos.json.
+# If anything changed, this opens a pull request to review.
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-summarise every repo, not just the changed ones"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency: index-repos
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      BRANCH: bot/repo-index
+    steps:
+      - name: Stop if Cloudflare isn't set up
+        if: env.CLOUDFLARE_API_TOKEN == ''
+        run: echo "::notice::Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets to turn on repo indexing." && exit 0
+      - uses: actions/checkout@v7
+        if: env.CLOUDFLARE_API_TOKEN != ''
+      - uses: actions/setup-node@v7
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        with:
+          node-version: 24
+      - name: Summarise repos
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: node scripts/index-repos.mjs ${{ inputs.force && '--force' || '' }}
+      - name: Open or update the pull request
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          if git diff --quiet -- assets/data/repos.json; then
+            echo "No changes to the repo index."; exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+          git add assets/data/repos.json
+          git commit -m "Update repo index from GitHub READMEs"
+          git push --force origin "$BRANCH"
+          if [ -z "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number')" ]; then
+            gh pr create --head "$BRANCH" --base main \
+              --title "Update repo index" \
+              --body "The AI re-read the READMEs of repos that changed and updated their cards in \`assets/data/repos.json\`. Check the wording, then merge to publish it on the site and in the Ask my CV terminal."
+          fi

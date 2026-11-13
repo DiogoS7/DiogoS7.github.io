@@ -1,0 +1,209 @@
+{
+  "generated": "2026-11-13T17:35:48.457Z",
+  "user": "DiogoS7",
+  "repos": [
+    {
+      "name": "DiogoS7.github.io",
+      "full_name": "DiogoS7/DiogoS7.github.io",
+      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
+      "homepage": "",
+      "description": "Personal CV interactive website",
+      "language": "JavaScript",
+      "topics": [],
+      "featured": true,
+      "source": "a5850c06d2b44a55256e1d5802f9c7c080a4277c|Personal CV interactive website|",
+      "summary": "Personal CV interactive website",
+      "highlights": [],
+      "stack": [
+        "JavaScript"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "Ledger-MCP",
+      "full_name": "DiogoS7/Ledger-MCP",
+      "url": "https://github.com/DiogoS7/Ledger-MCP",
+      "homepage": "",
+      "description": "An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.",
+      "language": "Python",
+      "topics": [
+        "fraud-detection",
+        "mcp",
+        "model-context-protocol",
+        "python",
+        "sqlite"
+      ],
+      "featured": false,
+      "source": "2d7b897758b76cbc850fe072f1dec508d2a07a86|An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.|fraud-detection,mcp,model-context-protocol,python,sqlite",
+      "summary": "An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.",
+      "highlights": [],
+      "stack": [
+        "Python"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "Ledger",
+      "full_name": "DiogoS7/Ledger",
+      "url": "https://github.com/DiogoS7/Ledger",
+      "homepage": "https://diogos7.github.io/Ledger/",
+      "description": "How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.",
+      "language": "Python",
+      "topics": [
+        "data-analysis",
+        "data-visualization",
+        "fraud-detection",
+        "pandas",
+        "portfolio",
+        "pytest",
+        "python",
+        "sql",
+        "sqlite",
+        "window-functions"
+      ],
+      "featured": true,
+      "source": "17cb961bf70f3a0b800b1e8e37443ba884f1d6a3|How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.|data-analysis,data-visualization,fraud-detection,pandas,portfolio,pytest,python,sql,sqlite,window-functions",
+      "summary": "How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.",
+      "highlights": [],
+      "stack": [
+        "Python"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "QualityView",
+      "full_name": "DiogoS7/QualityView",
+      "url": "https://github.com/DiogoS7/QualityView",
+      "homepage": "https://diogos7.github.io/QualityView/",
+      "description": "Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.",
+      "language": "JavaScript",
+      "topics": [
+        "dashboard",
+        "framer-motion",
+        "github-pages",
+        "glassmorphism",
+        "quality-assurance",
+        "react",
+        "software-testing",
+        "tailwindcss",
+        "test-management",
+        "traceability",
+        "vite",
+        "vitest"
+      ],
+      "featured": true,
+      "source": "0795cfdf23c1eb976644273ea50cd0cb14012647|Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.|dashboard,framer-motion,github-pages,glassmorphism,quality-assurance,react,software-testing,tailwindcss,test-management,traceability,vite,vitest",
+      "summary": "Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.",
+      "highlights": [],
+      "stack": [
+        "JavaScript"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "Houston",
+      "full_name": "DiogoS7/Houston",
+      "url": "https://github.com/DiogoS7/Houston",
+      "homepage": "",
+      "description": "Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.",
+      "language": "PowerShell",
+      "topics": [],
+      "featured": true,
+      "source": "e9c99a431d2127f62b64937249ca5246fc7ba4e7|Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.|",
+      "summary": "Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.",
+      "highlights": [],
+      "stack": [
+        "PowerShell"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "LevelUp",
+      "full_name": "DiogoS7/LevelUp",
+      "url": "https://github.com/DiogoS7/LevelUp",
+      "homepage": "https://diogos7.github.io/LevelUp/",
+      "description": "Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.",
+      "language": "JavaScript",
+      "topics": [
+        "dashboard",
+        "gamification",
+        "github-pages",
+        "learning-and-development",
+        "portfolio-project",
+        "react",
+        "sales-enablement",
+        "skills-management",
+        "tailwindcss",
+        "vite"
+      ],
+      "featured": true,
+      "source": "5e76fbbed722baf7ffccf5264f083435bee4ee7f|Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.|dashboard,gamification,github-pages,learning-and-development,portfolio-project,react,sales-enablement,skills-management,tailwindcss,vite",
+      "summary": "Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.",
+      "highlights": [],
+      "stack": [
+        "JavaScript"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "dronyDeliv",
+      "full_name": "DiogoS7/dronyDeliv",
+      "url": "https://github.com/DiogoS7/dronyDeliv",
+      "homepage": "",
+      "description": "Drone network management, layered on a package delivery network, built in Python",
+      "language": "Python",
+      "topics": [],
+      "featured": true,
+      "source": "b99e391421d6e6e66630c20d90483066b5bb5e36|Drone network management, layered on a package delivery network, built in Python|",
+      "summary": "Drone network management, layered on a package delivery network, built in Python",
+      "highlights": [],
+      "stack": [
+        "Python"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "Launchpad",
+      "full_name": "DiogoS7/Launchpad",
+      "url": "https://github.com/DiogoS7/Launchpad",
+      "homepage": "",
+      "description": "Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce",
+      "language": "JavaScript",
+      "topics": [],
+      "featured": true,
+      "source": "065c523b5d41308b51b985e1244a9c70d729f547|Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce|",
+      "summary": "Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce",
+      "highlights": [],
+      "stack": [
+        "JavaScript"
+      ],
+      "skills": [],
+      "ai": false
+    },
+    {
+      "name": "Django-CRM",
+      "full_name": "DiogoS7/Django-CRM",
+      "url": "https://github.com/DiogoS7/Django-CRM",
+      "homepage": "",
+      "description": "Customer relationship manager built with Django",
+      "language": "Python",
+      "topics": [],
+      "featured": true,
+      "source": "004a60151dc8bdd2f622296d7150cc7b71354967|Customer relationship manager built with Django|",
+      "summary": "Customer relationship manager built with Django",
+      "highlights": [],
+      "stack": [
+        "Python"
+      ],
+      "skills": [],
+      "ai": false
+    }
+  ]
+}

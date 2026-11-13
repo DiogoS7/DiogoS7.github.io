@@ -43,9 +43,38 @@ function renderSkills(){
 
 function matches(skills){ return !active.size || skills.some(s=>active.has(s)); }
 
+/* every other public repo, with a card an AI model wrote from its README (scripts/index-repos.mjs) */
+const MORE = "More on GitHub";
+let REPOS = [];
+fetch("assets/data/repos.json").then(r => r.ok ? r.json() : null).then(d => {
+  if (!d || !Array.isArray(d.repos)) return;
+  REPOS = d.repos.filter(r => !r.featured);
+  renderProjects();
+}).catch(() => {});
+
+function repoCardHTML(r){
+  const sk = r.skills && r.skills.length ? r.skills : [];
+  return `<article class="card repo-card ${!active.size || matches(sk)?'':'dim'}">
+    <div class="top"><h3>${esc(r.name)}</h3>${r.ai?`<span class="ai-badge" title="Summary written by an AI model from the repo's README">AI summary</span>`:''}</div>
+    <div class="repo">${esc(r.full_name)}</div>
+    <p>${esc(r.summary || r.description || "No description yet.")}</p>
+    ${r.highlights&&r.highlights.length?`<ul class="hl">${r.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:''}
+    <div class="tags">${(sk.length?sk:(r.stack||[])).map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
+    <div class="meta"><span>${esc([r.language, r.stars?`★ ${r.stars}`:""].filter(Boolean).join(" · "))}</span><span class="links">${r.homepage?`<a href="${esc(r.homepage)}" target="_blank" rel="noopener">Live site ↗</a>`:''}<a href="${esc(r.url)}" target="_blank" rel="noopener">View repo ↗</a></span></div>
+  </article>`;
+}
+
 function renderProjects(){
-  const cats = ["All", ...new Set(CV.projects.map(p=>p.category))];
-  $("#tabs").innerHTML = cats.map(c=>`<button type="button" role="tab" class="tab" data-tab="${esc(c)}" aria-selected="${c===tab}">${esc(c)} <span class="repo">${c==="All"?CV.projects.length:CV.projects.filter(p=>p.category===c).length}</span></button>`).join("");
+  const cats = ["All", ...new Set(CV.projects.map(p=>p.category)), ...(REPOS.length?[MORE]:[])];
+  const count = c => c==="All" ? CV.projects.length : c===MORE ? REPOS.length : CV.projects.filter(p=>p.category===c).length;
+  $("#tabs").innerHTML = cats.map(c=>`<button type="button" role="tab" class="tab ${c===MORE?'tab-more':''}" data-tab="${esc(c)}" aria-selected="${c===tab}">${esc(c)} <span class="repo">${count(c)}</span></button>`).join("");
+  if (tab===MORE){
+    const rs = [...REPOS].sort((a,b)=>matches(b.skills||[])-matches(a.skills||[]));
+    $("#grid").innerHTML = rs.map(repoCardHTML).join("") + (rs.some(r=>r.ai)
+      ? `<p class="repo-note">Cards marked AI summary are written by an AI model from each repo's README and refreshed weekly by a GitHub Action.</p>`
+      : `<p class="repo-note">Every public repo on my GitHub that isn't featured above, refreshed weekly by a GitHub Action.</p>`);
+    return;
+  }
   const list = CV.projects.filter(p => tab==="All" || p.category===tab);
   list.sort((a,b)=>matches(b.skills)-matches(a.skills));
   $("#grid").innerHTML = list.length ? list.map(p => `

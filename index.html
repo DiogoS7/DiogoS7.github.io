@@ -20,14 +20,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="assets/css/styles.css?v=20261101">
+<link rel="stylesheet" href="assets/css/styles.css?v=20261113">
 </head>
 <body>
 <nav class="nav" aria-label="Sections">
   <div class="wrap">
     <a class="brand" href="#top">Diogo Santos</a>
     <div class="navlinks" id="navlinks">
-      <a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      <a href="#journey">Journey</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#ask">Ask</a><a href="#contact">Contact</a>
     </div>
     <button class="themebtn" id="themebtn" type="button">Theme</button>
   </div>
@@ -41,6 +41,7 @@
     <p class="lede">I turn business needs into clear requirements, process models and tested solutions on Dynamics 365, Power Platform and Salesforce. Outside client work I build my own projects: QualityView, a release-quality dashboard in React; Houston on Power Platform; and Launchpad on Salesforce.</p>
     <div class="cta">
       <a class="btn primary" href="#journey">Start the launch ↓</a>
+      <a class="btn" href="#ask">Ask my CV &gt;_</a>
       <a class="btn" href="https://github.com/DiogoS7" target="_blank" rel="noopener">GitHub ↗</a>
       <a class="btn" href="https://www.linkedin.com/in/diogo-santos-b22801243/" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a class="btn" href="https://www.salesforce.com/trailblazer/diogosantos00" target="_blank" rel="noopener">Trailhead ↗</a>
@@ -86,6 +87,21 @@
     <div class="grid" id="grid"></div>
   </div></section>
 
+  <section id="ask"><div class="wrap">
+    <h2>Ask my CV</h2>
+    <p class="sub">Mission control for questions. Ask about my experience and projects in plain words, or type <code>help</code> for commands. Answers come from a free AI model running on Cloudflare, using only this CV and my public GitHub repos.</p>
+    <div class="term">
+      <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>mission-control · diogo@cv</span></div>
+      <div class="term-out" id="termout" role="log" aria-live="polite" aria-label="Conversation"></div>
+      <form class="term-in" id="termform" autocomplete="off">
+        <label for="termq" class="tp">diogo@cv:~$</label>
+        <input id="termq" name="q" maxlength="800" spellcheck="false" enterkeyhint="send" placeholder="Ask a question or type help">
+        <button type="submit" class="term-send" aria-label="Send">↵</button>
+      </form>
+    </div>
+    <div class="term-chips" id="termchips" aria-label="Suggestions"></div>
+  </div></section>
+
   <section id="contact"><div class="wrap">
     <h2>Contact</h2>
     <p class="sub">Open to new job opportunities and interesting collaborations.</p>
@@ -106,7 +122,8 @@
   </div>
 </div>
 <footer><div class="wrap">© 2026 Diogo Santos · Business analyst &amp; QA consultant · Lisbon, Portugal</div></footer>
-<script src="assets/js/data.js?v=20261113"></script>
-<script src="assets/js/app.js?v=20261112"></script>
+<script src="assets/js/data.js?v=20261113c"></script>
+<script src="assets/js/app.js?v=20261113b"></script>
+<script src="assets/js/ask.js?v=20261113c"></script>
 </body>
 </html>
