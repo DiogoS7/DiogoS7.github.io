@@ -4,16 +4,17 @@
   "name": "cv-ask",
   "main": "src/index.js",
   "compatibility_date": "2026-11-01",
-  "compatibility_flags": ["nodejs_compat"],
   "vars": {
     // sites allowed to call the Worker (comma-separated)
-    "ALLOWED_ORIGINS": "https://diogos7.github.io,http://localhost:8000"
+    "ALLOWED_ORIGINS": "https://diogos7.github.io,http://localhost:8000",
+    // Workers AI model for answers; any text-generation model in the Workers AI catalog works
+    "AI_MODEL": "@cf/google/gemma-4-26b-a4b-it"
   },
+  // Workers AI: free daily allowance on the Workers Free plan; past it, requests fail (no charges)
+  "ai": { "binding": "AI" },
   // 10 questions per visitor (IP) per minute
   "ratelimits": [
     { "name": "RATE_LIMITER", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } }
   ],
   "observability": { "enabled": true }
-  // ANTHROPIC_API_KEY is a secret: `npx wrangler secret put ANTHROPIC_API_KEY`
-  // (for local dev, put it in worker/.dev.vars, which git ignores)
 }

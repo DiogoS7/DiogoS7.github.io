@@ -1,5 +1,5 @@
 /* "Ask my CV": a small terminal. Built-in commands run here in the browser;
-   anything else is a question, streamed back from the Worker in worker/ (Claude). */
+   anything else is a question, streamed back from the Worker in worker/ (Cloudflare Workers AI). */
 (() => {
   const out = document.getElementById("termout");
   const form = document.getElementById("termform");
@@ -9,7 +9,7 @@
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "");
-  const history = [];        // the conversation sent to Claude
+  const history = [];        // the conversation sent to the AI
   const typed = []; let typedAt = 0; // input recall with ↑ / ↓
   let busy = false, controller = null;
 
@@ -135,7 +135,7 @@
   }
 
   function greet(){
-    print(`Mission control online. Ask about my experience and projects in plain words, or type <b>help</b>.${CV.askEndpoint ? `\n<span class="dimtxt">Answers are written by Claude from this CV and my public GitHub repos. It can make mistakes, so check the linked repos.</span>` : ""}`);
+    print(`Mission control online. Ask about my experience and projects in plain words, or type <b>help</b>.${CV.askEndpoint ? `\n<span class="dimtxt">Answers are written by an AI model from this CV and my public GitHub repos. AI can get details wrong, so check the linked repos.</span>` : ""}`);
   }
 
   form.addEventListener("submit", e => { e.preventDefault(); const v = input.value; input.value = ""; run(v); });

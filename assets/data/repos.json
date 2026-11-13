@@ -1,7 +1,25 @@
 {
-  "generated": "2026-11-13T17:05:58.321Z",
+  "generated": "2026-11-13T17:35:48.457Z",
   "user": "DiogoS7",
   "repos": [
+    {
+      "name": "DiogoS7.github.io",
+      "full_name": "DiogoS7/DiogoS7.github.io",
+      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
+      "homepage": "",
+      "description": "Personal CV interactive website",
+      "language": "JavaScript",
+      "topics": [],
+      "featured": true,
+      "source": "a5850c06d2b44a55256e1d5802f9c7c080a4277c|Personal CV interactive website|",
+      "summary": "Personal CV interactive website",
+      "highlights": [],
+      "stack": [
+        "JavaScript"
+      ],
+      "skills": [],
+      "ai": false
+    },
     {
       "name": "Ledger-MCP",
       "full_name": "DiogoS7/Ledger-MCP",
@@ -22,24 +40,6 @@
       "highlights": [],
       "stack": [
         "Python"
-      ],
-      "skills": [],
-      "ai": false
-    },
-    {
-      "name": "DiogoS7.github.io",
-      "full_name": "DiogoS7/DiogoS7.github.io",
-      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
-      "homepage": "",
-      "description": "Personal CV interactive website",
-      "language": "JavaScript",
-      "topics": [],
-      "featured": true,
-      "source": "a5850c06d2b44a55256e1d5802f9c7c080a4277c|Personal CV interactive website|",
-      "summary": "Personal CV interactive website",
-      "highlights": [],
-      "stack": [
-        "JavaScript"
       ],
       "skills": [],
       "ai": false
