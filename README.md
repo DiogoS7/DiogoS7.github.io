@@ -28,9 +28,9 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 | --- | --- |
 | ![Ask my CV terminal: whoami, then "Which projects show Salesforce skills?" answered with a link to Launchpad](docs/screenshots/ask.png) | ![More on GitHub tab: an AI-written card for Ledger-MCP](docs/screenshots/more-on-github.png) |
 
-| Ask my CV on a phone |
-| --- |
-| <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> |
+| Ask my CV, dark theme | Ask my CV on a phone |
+| --- | --- |
+| ![Ask my CV terminal in the dark theme: whoami, then "What is LevelUp?" answered with a link to LevelUp](docs/screenshots/ask-dark.png) | <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> |
 
 ## Features
 
