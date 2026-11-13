@@ -30,7 +30,7 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 
 | Ask my CV on a phone |
 | --- |
-| <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering which projects show Salesforce skills" width="300"> |
+| <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> |
 
 ## Features
 
