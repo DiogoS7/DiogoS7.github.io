@@ -1,73 +1,7 @@
 {
-  "generated": "2026-11-13T19:09:38.660Z",
+  "generated": "2026-11-13T22:19:50.300Z",
   "user": "DiogoS7",
   "repos": [
-    {
-      "name": "DiogoS7.github.io",
-      "full_name": "DiogoS7/DiogoS7.github.io",
-      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
-      "homepage": "",
-      "description": "Personal CV interactive website",
-      "language": "JavaScript",
-      "topics": [],
-      "featured": true,
-      "source": "a7469b17cb93bd0d9f27968e2891582fc38b8d6b|Personal CV interactive website|",
-      "summary": "An interactive personal CV website that uses a solar-system-themed canvas animation to represent career milestones.",
-      "highlights": [
-        "Includes an AI-powered terminal that answers questions about Diogo's experience using Cloudflare Workers AI.",
-        "Features an automated GitHub Action that generates and updates repository cards via AI.",
-        "Built without frameworks or build steps using plain HTML, CSS, and JavaScript.",
-        "Provides skill-based filtering and responsive design with light/dark mode support."
-      ],
-      "stack": [
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Cloudflare Workers AI",
-        "Git & GitHub"
-      ],
-      "skills": [
-        "Automated testing & CI",
-        "Git & GitHub"
-      ],
-      "ai": true
-    },
-    {
-      "name": "Ledger-MCP",
-      "full_name": "DiogoS7/Ledger-MCP",
-      "url": "https://github.com/DiogoS7/Ledger-MCP",
-      "homepage": "",
-      "description": "An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.",
-      "language": "Python",
-      "topics": [
-        "fraud-detection",
-        "mcp",
-        "model-context-protocol",
-        "python",
-        "sqlite"
-      ],
-      "featured": false,
-      "source": "2d7b897758b76cbc850fe072f1dec508d2a07a86|An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.|fraud-detection,mcp,model-context-protocol,python,sqlite",
-      "summary": "An MCP server that allows AI assistants to interface with card payment and fraud detection data. It enables natural language querying of transaction history, fraud check explanations, and threshold simulations.",
-      "highlights": [
-        "Provides tools for explaining blocked payments and identifying missed fraud patterns.",
-        "Implements 'what-if' analysis to simulate changes in fraud check settings and thresholds.",
-        "Enforces read-only data access using SQLite authorizers and mode=ro.",
-        "Supports complex SQL analyses across a dataset of 430,000 synthetic payments."
-      ],
-      "stack": [
-        "Python",
-        "SQLite",
-        "Model Context Protocol (MCP)"
-      ],
-      "skills": [
-        "Python",
-        "SQL",
-        "Git & GitHub",
-        "Automated testing & CI"
-      ],
-      "ai": true
-    },
     {
       "name": "Ledger",
       "full_name": "DiogoS7/Ledger",
@@ -88,19 +22,19 @@
         "window-functions"
       ],
       "featured": true,
-      "source": "17cb961bf70f3a0b800b1e8e37443ba884f1d6a3|How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.|data-analysis,data-visualization,fraud-detection,pandas,portfolio,pytest,python,sql,sqlite,window-functions",
-      "summary": "A data analysis project that uses a synthetic dataset of 430,000 bank transactions to analyze spending patterns and implement automated fraud detection.",
+      "source": "8ad6151eb85d3f3b2a156a1d98aaea6fde18e276|How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.|data-analysis,data-visualization,fraud-detection,pandas,portfolio,pytest,python,sql,sqlite,window-functions",
+      "summary": "A data analysis project that uses a synthetic dataset of 430,000 card payments to visualize spending patterns and detect fraudulent transactions.",
       "highlights": [
-        "Developed six fraud detection checks using SQL window functions to identify card testing and hijacked accounts.",
-        "Implemented a scoring system that automatically stops high-risk payments and flags others for manual review.",
-        "Built an automated CI pipeline using GitHub Actions to run pytest suites and publish an interactive report.",
-        "Created a web-based dashboard to visualize spending trends and fraud effectiveness."
+        "Implements six automated fraud checks using SQL window functions to identify card testing, copied cards, and hijacked accounts.",
+        "Features an MCP server that allows AI assistants to query the database and explain transaction block decisions.",
+        "Includes a scoring system that evaluates the precision and recall of different fraud detection thresholds.",
+        "Automated testing with pytest ensures fraud rules trigger correctly on malicious patterns without false positives."
       ],
       "stack": [
         "Python",
         "SQL",
         "SQLite",
-        "pandas",
+        "Pandas",
         "JavaScript",
         "HTML & CSS"
       ],
@@ -109,8 +43,39 @@
         "Python",
         "SQL",
         "JavaScript",
-        "HTML & CSS",
         "Git & GitHub"
+      ],
+      "ai": true
+    },
+    {
+      "name": "DiogoS7.github.io",
+      "full_name": "DiogoS7/DiogoS7.github.io",
+      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
+      "homepage": "",
+      "description": "Personal CV interactive website",
+      "language": "JavaScript",
+      "topics": [],
+      "featured": true,
+      "source": "5953d76536a835d5578c1863045bb274c098a4f6|Personal CV interactive website|",
+      "summary": "An interactive personal CV website that visualizes career milestones through a solar-system-themed canvas animation.",
+      "highlights": [
+        "Features an 'Ask my CV' terminal powered by Cloudflare Workers AI to answer questions about professional experience.",
+        "Uses a GitHub Action to automatically generate AI-written repository cards via README analysis.",
+        "Includes skill-based project filtering and a responsive design with light and dark themes.",
+        "Built without frameworks or build steps using vanilla web technologies."
+      ],
+      "stack": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Cloudflare Workers AI",
+        "GitHub Actions"
+      ],
+      "skills": [
+        "Automated testing & CI",
+        "Git & GitHub",
+        "JavaScript",
+        "HTML & CSS"
       ],
       "ai": true
     },
