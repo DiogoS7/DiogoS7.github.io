@@ -5,6 +5,9 @@
 */
 /* ======== EDIT YOUR CV HERE ======== */
 const CV = {
+  /* "Ask my CV" terminal: the URL of the Cloudflare Worker in worker/ (see the README).
+     Leave it empty and the terminal still answers its built-in commands. */
+  askEndpoint: "https://cv-ask.cv-ask-worker.workers.dev/api/ask",
   skills: [
     { group: "Business analysis", items: [
       { name:"Requirements gathering", level:4 },
@@ -248,3 +251,5 @@ const CV = {
   ],
 };
 /* =================================== */
+/* lets Node scripts and the Cloudflare Worker read the same content; browsers skip this */
+if (typeof module !== "undefined") module.exports = CV;

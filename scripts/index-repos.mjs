@@ -1,0 +1,174 @@
+// Builds assets/data/repos.json: every public repo of the GitHub user, with a short summary,
+// highlights and skills written by an AI model (Cloudflare Workers AI, free daily allowance)
+// from the repo's README and recent commits.
+// Repos whose README, description and topics haven't changed keep their previous card (no AI call),
+// so the file only changes, and the Action only opens a PR, when there is something new to show.
+//
+//   node scripts/index-repos.mjs            needs CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN
+//                                           (Workers AI permission); GITHUB_TOKEN recommended
+//   node scripts/index-repos.mjs --no-ai    metadata only, uses the repo description as summary
+//   node scripts/index-repos.mjs --force    re-summarise every repo
+// No npm dependencies: Node 18+ is enough.
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.join(here, "..");
+const OUT = path.join(root, "assets/data/repos.json");
+const USER = process.env.GITHUB_USER || "DiogoS7";
+const MODEL = process.env.AI_MODEL || "@cf/google/gemma-4-26b-a4b-it";
+const README_LIMIT = 12_000; // characters; longer READMEs are cut (and the model is told) to save allowance
+const { CLOUDFLARE_ACCOUNT_ID: ACCOUNT, CLOUDFLARE_API_TOKEN: CF_TOKEN } = process.env;
+
+const args = new Set(process.argv.slice(2));
+const NO_AI = args.has("--no-ai");
+const FORCE = args.has("--force");
+
+const CV = createRequire(import.meta.url)(path.join(root, "assets/js/data.js"));
+const SKILLS = CV.skills.flatMap(g => g.items.map(s => s.name));
+const FEATURED = new Set(CV.projects.map(p => (p.repo || "").toLowerCase()).filter(Boolean));
+
+async function gh(pathname) {
+  const headers = { Accept: "application/vnd.github+json", "User-Agent": "cv-repo-indexer", "X-GitHub-Api-Version": "2022-11-28" };
+  if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  const res = await fetch(`https://api.github.com${pathname}`, { headers });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub ${pathname}: ${res.status} ${await res.text()}`);
+  return res.json();
+}
+
+async function workersAI(messages) {
+  const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/ai/run/${MODEL}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${CF_TOKEN}`, "Content-Type": "application/json" },
+    // no hidden reasoning: it would use up max_tokens and the free allowance
+    body: JSON.stringify({ messages, max_tokens: 700, chat_template_kwargs: { enable_thinking: false } }),
+  });
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok || body.success === false) {
+    throw new Error(`Workers AI ${res.status}: ${JSON.stringify(body.errors || body).slice(0, 300)}`);
+  }
+  // plain models answer in result.response, OpenAI-style ones in result.choices
+  const r = body.result || {};
+  const out = r.response ?? r.choices?.[0]?.message?.content ?? "";
+  return typeof out === "string" ? out : JSON.stringify(out);
+}
+
+// Small models don't always return clean JSON, so pull out the object and check every field.
+function parseCard(text) {
+  const clean = text.replace(/<think>[\s\S]*?<\/think>/g, "");
+  const start = clean.indexOf("{"), end = clean.lastIndexOf("}");
+  if (start < 0 || end < start) throw new Error("no JSON in the answer");
+  const j = JSON.parse(clean.slice(start, end + 1));
+  const strings = (v, max) => (Array.isArray(v) ? v : []).filter(x => typeof x === "string" && x.trim()).map(x => x.trim()).slice(0, max);
+  const lower = new Map(SKILLS.map(s => [s.toLowerCase(), s]));
+  const card = {
+    summary: typeof j.summary === "string" ? j.summary.trim() : "",
+    highlights: strings(j.highlights, 4),
+    stack: strings(j.stack, 6),
+    skills: [...new Set(strings(j.skills, 8).map(s => lower.get(s.toLowerCase())).filter(Boolean))],
+  };
+  if (!card.summary) throw new Error("the answer had no summary");
+  return card;
+}
+
+async function summarise(repo, readme, commits, languages) {
+  let readmeText = readme || "(no README)";
+  let note = "";
+  if (readmeText.length > README_LIMIT) {
+    readmeText = readmeText.slice(0, README_LIMIT);
+    note = `\n(The README is longer than ${README_LIMIT} characters; only the first part is shown.)`;
+  }
+  const prompt = `Write a portfolio card for this GitHub repository, for recruiters reading Diogo Santos's CV website.
+
+Rules:
+- Use only the facts below. If the README is thin, keep the card short rather than guessing.
+- Plain, specific wording. No marketing language.
+- Reply with one JSON object and nothing else, with exactly these keys:
+  "summary": one or two sentences on what the project is and who it is for,
+  "highlights": two to four short, concrete facts (array of strings),
+  "stack": main languages, frameworks and services, most important first (array of strings),
+  "skills": skills this project clearly shows, chosen only from this list: ${SKILLS.join("; ")} (array of strings)
+
+Repository: ${repo.full_name}
+Description: ${repo.description || "(none)"}
+Languages (bytes): ${JSON.stringify(languages || {})}
+Topics: ${(repo.topics || []).join(", ") || "(none)"}
+Recent commit messages:
+${commits.map(c => `- ${c}`).join("\n") || "(none)"}
+
+README:${note}
+<readme>
+${readmeText}
+</readme>`;
+
+  const messages = [{ role: "user", content: prompt }];
+  try {
+    return parseCard(await workersAI(messages));
+  } catch (err) {
+    // one retry: small models sometimes wrap or break the JSON
+    console.warn(`retrying ${repo.full_name}: ${err.message}`);
+    return parseCard(await workersAI(messages));
+  }
+}
+
+async function main() {
+  if (!NO_AI && !(ACCOUNT && CF_TOKEN)) {
+    console.error("CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN are not set. Set them, or run with --no-ai for metadata only.");
+    process.exit(1);
+  }
+  const previous = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, "utf8")) : { repos: [] };
+  const prevByName = new Map(previous.repos.map(r => [r.full_name.toLowerCase(), r]));
+
+  const all = await gh(`/users/${USER}/repos?per_page=100&type=owner&sort=pushed`);
+  const repos = all.filter(r => !r.fork && !r.archived && !r.private);
+  const out = [];
+  let written = 0;
+
+  for (const repo of repos) {
+    const key = repo.full_name.toLowerCase();
+    const prev = prevByName.get(key);
+    const base = {
+      name: repo.name,
+      full_name: repo.full_name,
+      url: repo.html_url,
+      homepage: repo.homepage || "",
+      description: repo.description || "",
+      language: repo.language || "",
+      topics: repo.topics || [],
+      featured: FEATURED.has(key),
+    };
+    const readmeFile = await gh(`/repos/${repo.full_name}/readme`);
+    base.source = [readmeFile?.sha || "", repo.description || "", (repo.topics || []).join(",")].join("|");
+    const unchanged = prev && prev.source === base.source && prev.ai;
+    if (unchanged && !FORCE) { out.push({ ...prev, ...base }); continue; }
+    if (NO_AI) {
+      out.push({ ...base, summary: prev?.summary || repo.description || "", highlights: prev?.highlights || [], stack: prev?.stack || (repo.language ? [repo.language] : []), skills: prev?.skills || [], ai: prev?.ai || false });
+      continue;
+    }
+    const readme = readmeFile ? Buffer.from(readmeFile.content, readmeFile.encoding || "base64").toString("utf8") : "";
+    const [commits, languages] = await Promise.all([
+      gh(`/repos/${repo.full_name}/commits?per_page=15`).then(cs => (cs || []).map(c => c.commit.message.split("\n")[0])).catch(() => []),
+      gh(`/repos/${repo.full_name}/languages`),
+    ]);
+    try {
+      const card = await summarise(repo, readme, commits, languages);
+      out.push({ ...base, ...card, ai: true });
+      written++;
+      console.log(`summarised ${repo.full_name}`);
+    } catch (err) {
+      console.warn(`kept old card for ${repo.full_name}: ${err.message}`);
+      out.push({ ...base, summary: prev?.summary || repo.description || "", highlights: prev?.highlights || [], stack: prev?.stack || [], skills: prev?.skills || [], ai: prev?.ai || false });
+    }
+  }
+
+  const sameRepos = JSON.stringify(out) === JSON.stringify(previous.repos);
+  const result = { generated: sameRepos ? previous.generated : new Date().toISOString(), user: USER, repos: out };
+  fs.mkdirSync(path.dirname(OUT), { recursive: true });
+  fs.writeFileSync(OUT, JSON.stringify(result, null, 2) + "\n");
+  console.log(`${out.length} repos in ${path.relative(root, OUT)} (${written} newly summarised${sameRepos ? ", nothing changed" : ""})`);
+}
+
+main().catch(err => { console.error(err); process.exit(1); });
