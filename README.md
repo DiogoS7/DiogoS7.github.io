@@ -32,9 +32,9 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 | --- | --- |
 | ![Ask my CV terminal in the dark theme: whoami, then "What is LevelUp?" answered with a link to LevelUp](docs/screenshots/ask-dark.png) | <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> |
 
-| More on GitHub on a phone |
-| --- |
-| <img src="docs/screenshots/phone-more-on-github.png" alt="More on GitHub tab on a phone: the AI-written Ledger-MCP card" width="300"> |
+| More on GitHub on a phone | Ask my CV on a phone, dark theme |
+| --- | --- |
+| <img src="docs/screenshots/phone-more-on-github.png" alt="More on GitHub tab on a phone: the AI-written Ledger-MCP card" width="300"> | <img src="docs/screenshots/phone-ask-dark.png" alt="Ask my CV terminal on a phone in the dark theme, answering that he used Jira at Avanade and Winning" width="300"> |
 
 ## Features
 
