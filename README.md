@@ -24,21 +24,13 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 | --- | --- |
 | ![Dark theme](docs/screenshots/projects-dark.png) | <img src="docs/screenshots/phone-journey.png" alt="Phone layout" width="300"> |
 
-| Ask my CV | More on GitHub |
+| Ask my CV | Ask my CV, dark theme |
 | --- | --- |
-| ![Ask my CV terminal: whoami, then "Which projects show Salesforce skills?" answered with a link to Launchpad](docs/screenshots/ask.png) | ![More on GitHub tab: an AI-written card for Ledger-MCP](docs/screenshots/more-on-github.png) |
+| ![Ask my CV terminal: whoami, then "Which projects show Salesforce skills?" answered with a link to Launchpad](docs/screenshots/ask.png) | ![Ask my CV terminal in the dark theme: whoami, then "What is LevelUp?" answered with a link to LevelUp](docs/screenshots/ask-dark.png) |
 
-| Ask my CV, dark theme | Ask my CV on a phone |
+| Ask my CV on a phone | Ask my CV on a phone, dark theme |
 | --- | --- |
-| ![Ask my CV terminal in the dark theme: whoami, then "What is LevelUp?" answered with a link to LevelUp](docs/screenshots/ask-dark.png) | <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> |
-
-| More on GitHub on a phone | Ask my CV on a phone, dark theme |
-| --- | --- |
-| <img src="docs/screenshots/phone-more-on-github.png" alt="More on GitHub tab on a phone: the AI-written Ledger-MCP card" width="300"> | <img src="docs/screenshots/phone-ask-dark.png" alt="Ask my CV terminal on a phone in the dark theme, answering that he used Jira at Avanade and Winning" width="300"> |
-
-| More on GitHub, dark theme | More on GitHub on a phone, dark theme |
-| --- | --- |
-| ![More on GitHub tab in the dark theme: the AI-written Ledger-MCP card](docs/screenshots/more-on-github-dark.png) | <img src="docs/screenshots/phone-more-on-github-dark.png" alt="More on GitHub tab on a phone in the dark theme: the AI-written Ledger-MCP card" width="300"> |
+| <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> | <img src="docs/screenshots/phone-ask-dark.png" alt="Ask my CV terminal on a phone in the dark theme, answering that he used Jira at Avanade and Winning" width="300"> |
 
 ## Features
 
@@ -48,7 +40,7 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 - **Light and dark themes**, following the system setting, with a manual toggle.
 - **Responsive** from phone to desktop. On phones the flight is pinned to the top of the screen.
 - **Ask my CV**: a terminal where visitors ask about my experience in plain words. A free AI model on Cloudflare Workers AI answers from this CV and my public repos only, and links to the repo it got each answer from. Built-in commands (`help`, `ls`, `open ledger`, `cat skills`, `contact`) work without the AI.
-- **Self-updating repo cards**: once a week a GitHub Action has the same free AI read the README of every public repo and write a short card for it. If anything changed, it opens a pull request for me to review. Repos not featured by hand appear under **More on GitHub**.
+- **Self-updating repo cards**: once a week a GitHub Action has the same free AI read the README of every public repo and write a short card for it. If anything changed, it opens a pull request for me to review. Public repos that don't have a project card of their own appear under a **More on GitHub** tab, which only shows up when there is at least one.
 - **No frameworks, no build step.** Plain HTML, CSS and JavaScript, so GitHub Pages serves it as is.
 
 ## Project layout
