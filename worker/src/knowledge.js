@@ -17,11 +17,24 @@ function cvText() {
     if (m.type === "next") continue;
     out += `- ${m.title}, ${m.org} (${m.when})${m.current ? " [current]" : ""}\n`;
     for (const p of m.points) out += `  - ${p}\n`;
+    // the exact skills used in this role, so answers don't credit a job with a skill from a side project
+    if (m.skills?.length) out += `  Skills used in this role: ${m.skills.join(", ")}\n`;
   }
 
   out += "\n## Skills (level 1 = learning, 5 = uses daily)\n";
   for (const g of CV.skills) {
     out += `- ${g.group}: ${g.items.map(s => `${s.name} (${s.level})`).join(", ")}\n`;
+  }
+
+  // Worked out from the data, not left to the model: small models tend to merge similar
+  // skills (e.g. "Testing & QA" at a job vs "Automated testing & CI" in a project).
+  out += "\n## Where each skill was used (exact; use this for \"has he used X\" questions)\n";
+  const roles = CV.journey.filter(m => m.type !== "next");
+  for (const s of CV.skills.flatMap(g => g.items.map(i => i.name))) {
+    const jobs = roles.filter(m => m.type === "work" && (m.skills || []).includes(s)).map(m => `${m.title} at ${m.org.split(" · ")[0]}`);
+    const study = roles.filter(m => m.type === "edu" && (m.skills || []).includes(s)).map(m => m.org.split(" (")[0]);
+    const projects = CV.projects.filter(p => (p.skills || []).includes(s)).map(p => p.name);
+    out += `- ${s}: at work: ${jobs.join("; ") || "none listed"}. In studies: ${study.join("; ") || "none listed"}. In personal projects: ${projects.join(", ") || "none listed"}.\n`;
   }
 
   out += "\n## Languages\n";
