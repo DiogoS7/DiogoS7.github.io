@@ -14,7 +14,7 @@
       "source": "a7469b17cb93bd0d9f27968e2891582fc38b8d6b|Personal CV interactive website|",
       "summary": "An interactive personal CV website that uses a solar-system-themed canvas animation to represent career milestones.",
       "highlights": [
-        "Includes an AI-powered terminal that answers questions about the user's experience using Cloudflare Workers AI.",
+        "Includes an AI-powered terminal that answers questions about Diogo's experience using Cloudflare Workers AI.",
         "Features an automated GitHub Action that generates and updates repository cards via AI.",
         "Built without frameworks or build steps using plain HTML, CSS, and JavaScript.",
         "Provides skill-based filtering and responsive design with light/dark mode support."
@@ -262,8 +262,8 @@
       ],
       "stack": [
         "Python",
-        "HTML",
-        "CSS"
+        "pytest",
+        "GitHub Actions"
       ],
       "skills": [
         "Automated testing & CI",
@@ -285,23 +285,30 @@
       "summary": "A Salesforce-based employee onboarding application designed to automate task assignment, role preparation, and progress tracking for IT consultancy firms.",
       "highlights": [
         "End-to-end business analysis including AS-IS/TO-BE process mapping and requirements traceability.",
-        "Implemented entirely with declarative tools, including record-triggered Flows and validation rules.",
-        "Developed custom Lightning Web Components for real-time KPI monitoring and visual progress tracking.",
+        "All business logic is declarative (no Apex): record-triggered Flows and validation rules.",
+        "Two custom Lightning Web Components, built without Apex, for real-time KPI monitoring and visual progress tracking.",
         "Includes a full documentation suite with user stories, acceptance criteria, and data models."
       ],
       "stack": [
         "Salesforce",
-        "JavaScript",
-        "HTML & CSS",
-        "Apex",
-        "Python"
+        "Salesforce Flow",
+        "Lightning Web Components",
+        "Lightning App Builder",
+        "JavaScript"
       ],
       "skills": [
+        "Salesforce",
+        "Salesforce Flow",
+        "Lightning App Builder",
+        "Apex & LWC",
+        "JavaScript",
         "Requirements gathering",
         "Functional analysis",
         "User stories",
+        "BPMN",
         "Documentation & traceability",
         "Testing & QA",
+        "Automated testing & CI",
         "Git & GitHub"
       ],
       "ai": true
