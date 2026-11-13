@@ -32,6 +32,10 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 | --- | --- |
 | ![Ask my CV terminal in the dark theme: whoami, then "What is LevelUp?" answered with a link to LevelUp](docs/screenshots/ask-dark.png) | <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering that his automated testing experience comes from personal projects" width="300"> |
 
+| More on GitHub on a phone |
+| --- |
+| <img src="docs/screenshots/phone-more-on-github.png" alt="More on GitHub tab on a phone: the AI-written Ledger-MCP card" width="300"> |
+
 ## Features
 
 - **Solar-system journey**: a canvas animation tied to scroll. The rocket stops at one planet per milestone, with the year, stage and real distance from the Sun in AU. Tap a planet or a dot in the mini-map to jump to it.
