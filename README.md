@@ -31,8 +31,8 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 - **Screenshot galleries**: covers cycle through screenshots on hover; click for a gallery with arrows, thumbnails, keyboard and swipe.
 - **Light and dark themes**, following the system setting, with a manual toggle.
 - **Responsive** from phone to desktop. On phones the flight is pinned to the top of the screen.
-- **Ask my CV**: a terminal where visitors ask about my experience in plain words. Claude answers from this CV and my public repos only, and links to the repo it got each answer from. Built-in commands (`help`, `ls`, `open ledger`, `cat skills`, `contact`) work without the AI.
-- **Self-updating repo cards**: once a week a GitHub Action has Claude read the README of every public repo and write a short card for it. If anything changed, it opens a pull request for me to review. Repos not featured by hand appear under **More on GitHub**.
+- **Ask my CV**: a terminal where visitors ask about my experience in plain words. A free AI model on Cloudflare Workers AI answers from this CV and my public repos only, and links to the repo it got each answer from. Built-in commands (`help`, `ls`, `open ledger`, `cat skills`, `contact`) work without the AI.
+- **Self-updating repo cards**: once a week a GitHub Action has the same free AI read the README of every public repo and write a short card for it. If anything changed, it opens a pull request for me to review. Repos not featured by hand appear under **More on GitHub**.
 - **No frameworks, no build step.** Plain HTML, CSS and JavaScript, so GitHub Pages serves it as is.
 
 ## Project layout
@@ -44,8 +44,8 @@ assets/js/data.js       ALL CV CONTENT: skills, projects, journey, languages, co
 assets/js/app.js        rendering, filters, gallery, theme toggle, solar-system flight
 assets/js/ask.js        the Ask my CV terminal
 assets/data/repos.json  repo cards written by scripts/index-repos.mjs (don't edit by hand)
-scripts/index-repos.mjs reads every public repo's README and asks Claude for a card
-worker/                 Cloudflare Worker that answers Ask my CV questions with Claude
+scripts/index-repos.mjs reads every public repo's README and asks Workers AI for a card
+worker/                 Cloudflare Worker that answers Ask my CV questions with Workers AI
 assets/img/shots/       project screenshots shown on the site (WebP)
 assets/img/og-image.png preview image used when the link is shared (1200×627)
 docs/screenshots/       screenshots for this README
@@ -76,46 +76,43 @@ python -m http.server 8000
 
 ## Ask my CV and the repo cards
 
-Both use the Claude API (model `claude-opus-5-5`). The API key never reaches the browser: the terminal calls a small Cloudflare Worker, and the Worker calls Claude.
+Both run on **Cloudflare Workers AI on the free Workers plan**, so they cost nothing. The free plan has a daily allowance (10,000 "neurons" per day, reset at 00:00 UTC). Past it, requests fail until the next day, and nothing is ever charged; just don't upgrade to Workers Paid if you want to keep that guarantee. The model is set by `AI_MODEL` in `worker/wrangler.jsonc` (default `@cf/google/gemma-4-26b-a4b-it`), and any text-generation model in the [Workers AI catalog](https://developers.cloudflare.com/workers-ai/models/) works there.
 
-**How the Worker answers.** `worker/src/knowledge.js` turns `data.js` and `repos.json` into a briefing that goes into the system prompt, and Claude is told to answer only from it. Both files are bundled when the Worker deploys, so it always matches the site. The briefing is prompt-cached, each answer is capped at 2,000 tokens, questions at 800 characters, and each visitor at 10 questions a minute. Only the origins in `ALLOWED_ORIGINS` (`worker/wrangler.jsonc`) can call it.
+**How the Worker answers.** `worker/src/knowledge.js` turns `data.js` and `repos.json` into a briefing that goes into the system prompt, and the model is told to answer only from it. Both files are bundled when the Worker deploys, so it always matches the site. Each answer is capped at 600 tokens, questions at 800 characters, conversations at the last 6 messages, and each visitor at 10 questions a minute. Only the origins in `ALLOWED_ORIGINS` (`worker/wrangler.jsonc`) can call it. Free models get details wrong more often than paid ones, so the terminal says so and every answer links to the repo it's based on.
 
 ### One-time setup
 
-1. **Claude API key.** Create one at [platform.claude.com](https://platform.claude.com). It's worth setting a monthly spend limit there too.
-2. **Deploy the Worker** (needs a free Cloudflare account):
+1. **Deploy the Worker** (needs a free Cloudflare account, no payment card):
    ```bash
    cd worker
    npm install
    npx wrangler login
-   npx wrangler secret put ANTHROPIC_API_KEY
    npx wrangler deploy
    ```
    Wrangler prints the Worker's URL, for example `https://cv-ask.<your-subdomain>.workers.dev`.
-3. **Point the site at it.** In `assets/js/data.js`, set `askEndpoint: "https://cv-ask.<your-subdomain>.workers.dev/api/ask"` and push. Until this is set, the terminal still runs its built-in commands and says AI answers aren't switched on.
-4. **Repository secrets** (Settings → Secrets and variables → Actions):
-   - `ANTHROPIC_API_KEY`, for the weekly repo index.
-   - `CLOUDFLARE_API_TOKEN` (template "Edit Cloudflare Workers") and `CLOUDFLARE_ACCOUNT_ID`, so the Worker redeploys itself whenever `data.js`, `repos.json` or `worker/` change on `main`.
-5. **Let Actions open pull requests**: Settings → Actions → General → Workflow permissions → tick *Allow GitHub Actions to create and approve pull requests*.
+2. **Point the site at it.** In `assets/js/data.js`, set `askEndpoint: "https://cv-ask.<your-subdomain>.workers.dev/api/ask"` and push. Until this is set, the terminal still runs its built-in commands and says AI answers aren't switched on.
+3. **Repository secrets** (Settings → Secrets and variables → Actions), used by both workflows:
+   - `CLOUDFLARE_ACCOUNT_ID`: shown on the Cloudflare dashboard's Workers & Pages overview.
+   - `CLOUDFLARE_API_TOKEN`: create one under My Profile → API Tokens from the *Edit Cloudflare Workers* template, and add the *Workers AI* permissions (Read and Edit) so the repo-card Action can use it too.
+4. **Let Actions open pull requests**: Settings → Actions → General → Workflow permissions → tick *Allow GitHub Actions to create and approve pull requests*.
 
 Workflows skip themselves with a notice until their secrets exist, so nothing fails before setup.
 
 ### Refreshing the repo cards
 
-`.github/workflows/index-repos.yml` runs every Monday, or on demand from the Actions tab (tick *force* to rewrite every card). It only asks Claude about repos whose README, description or topics changed, and opens a pull request on `bot/repo-index` when there's something new. Pull requests opened by the Action don't start other workflows, so the checks run once you merge.
+`.github/workflows/index-repos.yml` runs every Monday just after the daily allowance resets, or on demand from the Actions tab (tick *force* to rewrite every card). It only asks the AI about repos whose README, description or topics changed, and opens a pull request on `bot/repo-index` when there's something new, so you can fix any wording before it goes live. Pull requests opened by the Action don't start other workflows, so the checks run once you merge.
 
-To run it yourself:
+To run it yourself (Node 18 or later, no `npm install` needed):
 
 ```bash
-npm install --prefix scripts
 node scripts/index-repos.mjs
 ```
 
-It needs `ANTHROPIC_API_KEY`, and `GITHUB_TOKEN` helps avoid GitHub's rate limit (`GITHUB_TOKEN=$(gh auth token)`). Add `--no-ai` to refresh only the GitHub details.
+It needs `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` in the environment, and `GITHUB_TOKEN` helps avoid GitHub's rate limit (`GITHUB_TOKEN=$(gh auth token)`). Add `--no-ai` to refresh only the GitHub details.
 
 ### Trying the terminal locally
 
-Put `ANTHROPIC_API_KEY=...` in `worker/.dev.vars` (git ignores it), run `npx wrangler dev` in `worker/`, and temporarily set `askEndpoint` to `http://localhost:8787/api/ask` while serving the site on port 8000.
+Run `npx wrangler dev` in `worker/` (Workers AI always runs on Cloudflare, so you need to be logged in, and local questions use the same free allowance), and temporarily set `askEndpoint` to `http://localhost:8787/api/ask` while serving the site on port 8000.
 
 ## Publishing
 

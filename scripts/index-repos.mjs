@@ -1,23 +1,26 @@
-// Builds assets/data/repos.json: every public repo of the GitHub user, with a short
-// summary, highlights and skills written by Claude from the repo's README and recent commits.
-// Repos whose README, description and topics haven't changed keep their previous card (no API call),
+// Builds assets/data/repos.json: every public repo of the GitHub user, with a short summary,
+// highlights and skills written by an AI model (Cloudflare Workers AI, free daily allowance)
+// from the repo's README and recent commits.
+// Repos whose README, description and topics haven't changed keep their previous card (no AI call),
 // so the file only changes, and the Action only opens a PR, when there is something new to show.
 //
-//   node scripts/index-repos.mjs            needs ANTHROPIC_API_KEY; GITHUB_TOKEN recommended
+//   node scripts/index-repos.mjs            needs CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN
+//                                           (Workers AI permission); GITHUB_TOKEN recommended
 //   node scripts/index-repos.mjs --no-ai    metadata only, uses the repo description as summary
 //   node scripts/index-repos.mjs --force    re-summarise every repo
+// No npm dependencies: Node 18+ is enough.
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
-import Anthropic from "@anthropic-ai/sdk";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, "..");
 const OUT = path.join(root, "assets/data/repos.json");
 const USER = process.env.GITHUB_USER || "DiogoS7";
-const MODEL = "claude-opus-5-5";
-const README_LIMIT = 30_000; // characters; longer READMEs are cut and Claude is told so
+const MODEL = process.env.AI_MODEL || "@cf/google/gemma-4-26b-a4b-it";
+const README_LIMIT = 12_000; // characters; longer READMEs are cut (and the model is told) to save allowance
+const { CLOUDFLARE_ACCOUNT_ID: ACCOUNT, CLOUDFLARE_API_TOKEN: CF_TOKEN } = process.env;
 
 const args = new Set(process.argv.slice(2));
 const NO_AI = args.has("--no-ai");
@@ -36,26 +39,57 @@ async function gh(pathname) {
   return res.json();
 }
 
-const SCHEMA = {
-  type: "object",
-  additionalProperties: false,
-  required: ["summary", "highlights", "stack", "skills"],
-  properties: {
-    summary: { type: "string", description: "One or two plain sentences: what the project is and who it is for." },
-    highlights: { type: "array", items: { type: "string" }, description: "Two to four short, concrete facts worth a recruiter's attention." },
-    stack: { type: "array", items: { type: "string" }, description: "Main languages, frameworks and services, most important first." },
-    skills: { type: "array", items: { type: "string", enum: SKILLS }, description: "Skills from the CV's list that this project clearly demonstrates." },
-  },
-};
+async function workersAI(messages) {
+  const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/ai/run/${MODEL}`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${CF_TOKEN}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ messages, max_tokens: 700 }),
+  });
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok || body.success === false) {
+    throw new Error(`Workers AI ${res.status}: ${JSON.stringify(body.errors || body).slice(0, 300)}`);
+  }
+  // plain models answer in result.response, OpenAI-style ones in result.choices
+  const r = body.result || {};
+  const out = r.response ?? r.choices?.[0]?.message?.content ?? "";
+  return typeof out === "string" ? out : JSON.stringify(out);
+}
 
-async function summarise(client, repo, readme, commits, languages) {
+// Small models don't always return clean JSON, so pull out the object and check every field.
+function parseCard(text) {
+  const clean = text.replace(/<think>[\s\S]*?<\/think>/g, "");
+  const start = clean.indexOf("{"), end = clean.lastIndexOf("}");
+  if (start < 0 || end < start) throw new Error("no JSON in the answer");
+  const j = JSON.parse(clean.slice(start, end + 1));
+  const strings = (v, max) => (Array.isArray(v) ? v : []).filter(x => typeof x === "string" && x.trim()).map(x => x.trim()).slice(0, max);
+  const lower = new Map(SKILLS.map(s => [s.toLowerCase(), s]));
+  const card = {
+    summary: typeof j.summary === "string" ? j.summary.trim() : "",
+    highlights: strings(j.highlights, 4),
+    stack: strings(j.stack, 6),
+    skills: [...new Set(strings(j.skills, 8).map(s => lower.get(s.toLowerCase())).filter(Boolean))],
+  };
+  if (!card.summary) throw new Error("the answer had no summary");
+  return card;
+}
+
+async function summarise(repo, readme, commits, languages) {
   let readmeText = readme || "(no README)";
   let note = "";
   if (readmeText.length > README_LIMIT) {
     readmeText = readmeText.slice(0, README_LIMIT);
     note = `\n(The README is longer than ${README_LIMIT} characters; only the first part is shown.)`;
   }
-  const prompt = `Write a portfolio card for this GitHub repository, for recruiters reading Diogo Santos's CV website. Use only the facts below; if the README is thin, keep the card short rather than guessing. Plain, specific wording, no marketing language.
+  const prompt = `Write a portfolio card for this GitHub repository, for recruiters reading Diogo Santos's CV website.
+
+Rules:
+- Use only the facts below. If the README is thin, keep the card short rather than guessing.
+- Plain, specific wording. No marketing language.
+- Reply with one JSON object and nothing else, with exactly these keys:
+  "summary": one or two sentences on what the project is and who it is for,
+  "highlights": two to four short, concrete facts (array of strings),
+  "stack": main languages, frameworks and services, most important first (array of strings),
+  "skills": skills this project clearly shows, chosen only from this list: ${SKILLS.join("; ")} (array of strings)
 
 Repository: ${repo.full_name}
 Description: ${repo.description || "(none)"}
@@ -69,27 +103,23 @@ README:${note}
 ${readmeText}
 </readme>`;
 
-  const res = await client.beta.messages.create({
-    model: MODEL,
-    max_tokens: 16000,
-    betas: ["server-side-fallback-2026-07-01"],
-    fallbacks: "default",
-    output_config: { format: { type: "json_schema", schema: SCHEMA } },
-    messages: [{ role: "user", content: prompt }],
-  });
-  if (res.stop_reason === "refusal") throw new Error(`Claude declined to summarise ${repo.full_name}`);
-  const text = res.content.filter(b => b.type === "text").map(b => b.text).join("");
-  return JSON.parse(text);
+  const messages = [{ role: "user", content: prompt }];
+  try {
+    return parseCard(await workersAI(messages));
+  } catch (err) {
+    // one retry: small models sometimes wrap or break the JSON
+    console.warn(`retrying ${repo.full_name}: ${err.message}`);
+    return parseCard(await workersAI(messages));
+  }
 }
 
 async function main() {
-  if (!NO_AI && !process.env.ANTHROPIC_API_KEY) {
-    console.error("ANTHROPIC_API_KEY is not set. Set it, or run with --no-ai for metadata only.");
+  if (!NO_AI && !(ACCOUNT && CF_TOKEN)) {
+    console.error("CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN are not set. Set them, or run with --no-ai for metadata only.");
     process.exit(1);
   }
   const previous = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, "utf8")) : { repos: [] };
   const prevByName = new Map(previous.repos.map(r => [r.full_name.toLowerCase(), r]));
-  const client = NO_AI ? null : new Anthropic();
 
   const all = await gh(`/users/${USER}/repos?per_page=100&type=owner&sort=pushed`);
   const repos = all.filter(r => !r.fork && !r.archived && !r.private);
@@ -123,7 +153,7 @@ async function main() {
       gh(`/repos/${repo.full_name}/languages`),
     ]);
     try {
-      const card = await summarise(client, repo, readme, commits, languages);
+      const card = await summarise(repo, readme, commits, languages);
       out.push({ ...base, ...card, ai: true });
       written++;
       console.log(`summarised ${repo.full_name}`);

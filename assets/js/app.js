@@ -43,7 +43,7 @@ function renderSkills(){
 
 function matches(skills){ return !active.size || skills.some(s=>active.has(s)); }
 
-/* every other public repo, with a card Claude wrote from its README (scripts/index-repos.mjs) */
+/* every other public repo, with a card an AI model wrote from its README (scripts/index-repos.mjs) */
 const MORE = "More on GitHub";
 let REPOS = [];
 fetch("assets/data/repos.json").then(r => r.ok ? r.json() : null).then(d => {
@@ -55,7 +55,7 @@ fetch("assets/data/repos.json").then(r => r.ok ? r.json() : null).then(d => {
 function repoCardHTML(r){
   const sk = r.skills && r.skills.length ? r.skills : [];
   return `<article class="card repo-card ${!active.size || matches(sk)?'':'dim'}">
-    <div class="top"><h3>${esc(r.name)}</h3>${r.ai?`<span class="ai-badge" title="Summary written by Claude from the repo's README">AI summary</span>`:''}</div>
+    <div class="top"><h3>${esc(r.name)}</h3>${r.ai?`<span class="ai-badge" title="Summary written by an AI model from the repo's README">AI summary</span>`:''}</div>
     <div class="repo">${esc(r.full_name)}</div>
     <p>${esc(r.summary || r.description || "No description yet.")}</p>
     ${r.highlights&&r.highlights.length?`<ul class="hl">${r.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:''}
@@ -71,7 +71,7 @@ function renderProjects(){
   if (tab===MORE){
     const rs = [...REPOS].sort((a,b)=>matches(b.skills||[])-matches(a.skills||[]));
     $("#grid").innerHTML = rs.map(repoCardHTML).join("") + (rs.some(r=>r.ai)
-      ? `<p class="repo-note">Cards marked AI summary are written by Claude from each repo's README and refreshed weekly by a GitHub Action.</p>`
+      ? `<p class="repo-note">Cards marked AI summary are written by an AI model from each repo's README and refreshed weekly by a GitHub Action.</p>`
       : `<p class="repo-note">Every public repo on my GitHub that isn't featured above, refreshed weekly by a GitHub Action.</p>`);
     return;
   }
