@@ -28,6 +28,10 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 | --- | --- |
 | ![Ask my CV terminal: whoami, then "Which projects show Salesforce skills?" answered with a link to Launchpad](docs/screenshots/ask.png) | ![More on GitHub tab: an AI-written card for Ledger-MCP](docs/screenshots/more-on-github.png) |
 
+| Ask my CV on a phone |
+| --- |
+| <img src="docs/screenshots/phone-ask.png" alt="Ask my CV terminal on a phone, answering which projects show Salesforce skills" width="300"> |
+
 ## Features
 
 - **Solar-system journey**: a canvas animation tied to scroll. The rocket stops at one planet per milestone, with the year, stage and real distance from the Sun in AU. Tap a planet or a dot in the mini-map to jump to it.
