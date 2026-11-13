@@ -116,7 +116,7 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,38px);let
 .tag{font:12px var(--mono);padding:2px 8px;border-radius:4px;background:var(--cobalt-soft);color:var(--cobalt)}
 .meta{display:flex;justify-content:space-between;align-items:center;gap:10px;font:12px var(--mono);color:var(--muted);border-top:1px solid var(--line);padding-top:10px;flex-wrap:wrap}
 .meta a{font-weight:600;text-decoration:none}
-.meta .links{display:flex;gap:14px}
+.meta .links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px 14px}
 details summary{cursor:pointer;font:600 13px var(--body);color:var(--cobalt);list-style:none}
 details summary::-webkit-details-marker{display:none}
 details summary::before{content:"+ ";font-family:var(--mono)}
