@@ -1,0 +1,19 @@
+{
+  // Cloudflare Worker behind the "Ask my CV" terminal. Setup steps are in the README.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cv-ask",
+  "main": "src/index.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    // sites allowed to call the Worker (comma-separated)
+    "ALLOWED_ORIGINS": "https://diogos7.github.io,http://localhost:8000"
+  },
+  // 10 questions per visitor (IP) per minute
+  "ratelimits": [
+    { "name": "RATE_LIMITER", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } }
+  ],
+  "observability": { "enabled": true }
+  // ANTHROPIC_API_KEY is a secret: `npx wrangler secret put ANTHROPIC_API_KEY`
+  // (for local dev, put it in worker/.dev.vars, which git ignores)
+}

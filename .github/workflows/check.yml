@@ -16,5 +16,16 @@ jobs:
         run: |
           node --check assets/js/data.js
           node --check assets/js/app.js
+          node --check assets/js/ask.js
+          node --check scripts/index-repos.mjs
+          node --check worker/src/index.js
+          node --check worker/src/knowledge.js
+      - name: Repo index is valid JSON
+        run: node -e "const r=require('./assets/data/repos.json'); if(!Array.isArray(r.repos)) throw new Error('repos missing')"
       - name: Every referenced file exists
         run: node scripts/check-assets.js
+      - name: Worker bundles
+        working-directory: worker
+        run: |
+          npm ci
+          npx wrangler deploy --dry-run --outdir dist
