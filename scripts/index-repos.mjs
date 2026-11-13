@@ -43,7 +43,8 @@ async function workersAI(messages) {
   const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${ACCOUNT}/ai/run/${MODEL}`, {
     method: "POST",
     headers: { Authorization: `Bearer ${CF_TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ messages, max_tokens: 700 }),
+    // no hidden reasoning: it would use up max_tokens and the free allowance
+    body: JSON.stringify({ messages, max_tokens: 700, chat_template_kwargs: { enable_thinking: false } }),
   });
   const body = await res.json().catch(() => ({}));
   if (!res.ok || body.success === false) {
