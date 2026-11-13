@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T17:35:48.457Z",
+  "generated": "2026-11-13T19:09:38.660Z",
   "user": "DiogoS7",
   "repos": [
     {
@@ -11,14 +11,26 @@
       "language": "JavaScript",
       "topics": [],
       "featured": true,
-      "source": "a5850c06d2b44a55256e1d5802f9c7c080a4277c|Personal CV interactive website|",
-      "summary": "Personal CV interactive website",
-      "highlights": [],
-      "stack": [
-        "JavaScript"
+      "source": "a7469b17cb93bd0d9f27968e2891582fc38b8d6b|Personal CV interactive website|",
+      "summary": "An interactive personal CV website that uses a solar-system-themed canvas animation to represent career milestones.",
+      "highlights": [
+        "Includes an AI-powered terminal that answers questions about the user's experience using Cloudflare Workers AI.",
+        "Features an automated GitHub Action that generates and updates repository cards via AI.",
+        "Built without frameworks or build steps using plain HTML, CSS, and JavaScript.",
+        "Provides skill-based filtering and responsive design with light/dark mode support."
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Cloudflare Workers AI",
+        "Git & GitHub"
+      ],
+      "skills": [
+        "Automated testing & CI",
+        "Git & GitHub"
+      ],
+      "ai": true
     },
     {
       "name": "Ledger-MCP",
@@ -36,13 +48,25 @@
       ],
       "featured": false,
       "source": "2d7b897758b76cbc850fe072f1dec508d2a07a86|An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.|fraud-detection,mcp,model-context-protocol,python,sqlite",
-      "summary": "An MCP server for Ledger: ask an AI about card payments, explain why a payment was blocked, find missed fraud and try out the fraud checks. Python, SQLite, MCP.",
-      "highlights": [],
-      "stack": [
-        "Python"
+      "summary": "An MCP server that allows AI assistants to interface with card payment and fraud detection data. It enables natural language querying of transaction history, fraud check explanations, and threshold simulations.",
+      "highlights": [
+        "Provides tools for explaining blocked payments and identifying missed fraud patterns.",
+        "Implements 'what-if' analysis to simulate changes in fraud check settings and thresholds.",
+        "Enforces read-only data access using SQLite authorizers and mode=ro.",
+        "Supports complex SQL analyses across a dataset of 430,000 synthetic payments."
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "Python",
+        "SQLite",
+        "Model Context Protocol (MCP)"
+      ],
+      "skills": [
+        "Python",
+        "SQL",
+        "Git & GitHub",
+        "Automated testing & CI"
+      ],
+      "ai": true
     },
     {
       "name": "Ledger",
@@ -65,13 +89,30 @@
       ],
       "featured": true,
       "source": "17cb961bf70f3a0b800b1e8e37443ba884f1d6a3|How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.|data-analysis,data-visualization,fraud-detection,pandas,portfolio,pytest,python,sql,sqlite,window-functions",
-      "summary": "How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.",
-      "highlights": [],
-      "stack": [
-        "Python"
+      "summary": "A data analysis project that uses a synthetic dataset of 430,000 bank transactions to analyze spending patterns and implement automated fraud detection.",
+      "highlights": [
+        "Developed six fraud detection checks using SQL window functions to identify card testing and hijacked accounts.",
+        "Implemented a scoring system that automatically stops high-risk payments and flags others for manual review.",
+        "Built an automated CI pipeline using GitHub Actions to run pytest suites and publish an interactive report.",
+        "Created a web-based dashboard to visualize spending trends and fraud effectiveness."
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "Python",
+        "SQL",
+        "SQLite",
+        "pandas",
+        "JavaScript",
+        "HTML & CSS"
+      ],
+      "skills": [
+        "Automated testing & CI",
+        "Python",
+        "SQL",
+        "JavaScript",
+        "HTML & CSS",
+        "Git & GitHub"
+      ],
+      "ai": true
     },
     {
       "name": "QualityView",
@@ -96,13 +137,31 @@
       ],
       "featured": true,
       "source": "0795cfdf23c1eb976644273ea50cd0cb14012647|Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.|dashboard,framer-motion,github-pages,glassmorphism,quality-assurance,react,software-testing,tailwindcss,test-management,traceability,vite,vitest",
-      "summary": "Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.",
-      "highlights": [],
-      "stack": [
-        "JavaScript"
+      "summary": "A quality engineering dashboard designed for QA leads to manage the full testing loop, from requirement traceability to release readiness.",
+      "highlights": [
+        "Automated test generation from user stories using AI or a no-code builder",
+        "Requirement traceability matrix linking requirements, tests, and defects",
+        "Go/No-Go readiness reporting based on execution rates and defect severity",
+        "Simulated parallel test execution with intelligent self-healing locators"
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "React",
+        "JavaScript",
+        "Tailwind CSS",
+        "Vite",
+        "Vitest",
+        "GitHub Actions"
+      ],
+      "skills": [
+        "Requirements gathering",
+        "Functional analysis",
+        "User stories",
+        "Documentation & traceability",
+        "Testing & QA",
+        "Automated testing & CI",
+        "Git & GitHub"
+      ],
+      "ai": true
     },
     {
       "name": "Houston",
@@ -114,13 +173,30 @@
       "topics": [],
       "featured": true,
       "source": "e9c99a431d2127f62b64937249ca5246fc7ba4e7|Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.|",
-      "summary": "Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.",
-      "highlights": [],
+      "summary": "A consulting delivery platform designed to manage the full engagement lifecycle, including staffing, scoping, and post-go-live support.",
+      "highlights": [
+        "Includes modules for consultant staffing, skills matrix tracking, and incident management with SLAs",
+        "Features automated timesheet approval flows and proactive skill-gap alerts",
+        "Integrates embedded Power BI analytics for utilization and bench forecasting",
+        "Implements a centralized Dataverse data model for consultants, clients, and engagements"
+      ],
       "stack": [
+        "Power Platform",
+        "Power Apps",
+        "Power Automate",
+        "Power BI",
+        "Dataverse",
         "PowerShell"
       ],
-      "skills": [],
-      "ai": false
+      "skills": [
+        "User stories",
+        "Documentation & traceability",
+        "Automated testing & CI",
+        "Power Platform",
+        "Power BI",
+        "Git & GitHub"
+      ],
+      "ai": true
     },
     {
       "name": "LevelUp",
@@ -143,13 +219,30 @@
       ],
       "featured": true,
       "source": "5e76fbbed722baf7ffccf5264f083435bee4ee7f|Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.|dashboard,gamification,github-pages,learning-and-development,portfolio-project,react,sales-enablement,skills-management,tailwindcss,vite",
-      "summary": "Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.",
-      "highlights": [],
-      "stack": [
-        "JavaScript"
+      "summary": "A gamified learning platform designed for field sales teams to bridge skill gaps through short quests and manager-led course creation.",
+      "highlights": [
+        "Features a 'Course Studio' that uses AI to draft training content from source documents with a human-in-the-loop review process.",
+        "Provides managers with a dashboard for skills heatmaps, launch readiness, and adoption metrics.",
+        "Includes gamification elements such as XP, badges, streaks, and weekly leaderboards.",
+        "Managed via user stories and sprints using a GitHub project board."
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "React",
+        "Tailwind CSS",
+        "Vite",
+        "JavaScript",
+        "Vitest",
+        "GitHub Actions"
+      ],
+      "skills": [
+        "User stories",
+        "Documentation & traceability",
+        "Agile delivery",
+        "Testing & QA",
+        "Automated testing & CI",
+        "Git & GitHub"
+      ],
+      "ai": true
     },
     {
       "name": "dronyDeliv",
@@ -161,13 +254,23 @@
       "topics": [],
       "featured": true,
       "source": "b99e391421d6e6e66630c20d90483066b5bb5e36|Drone network management, layered on a package delivery network, built in Python|",
-      "summary": "Drone network management, layered on a package delivery network, built in Python",
-      "highlights": [],
+      "summary": "A command-line scheduler for managing a drone delivery fleet and parcel orders.",
+      "highlights": [
+        "Assigns drones to parcels based on zone, availability, autonomy, and weight capacity.",
+        "Generates updated fleet states and delivery timetables from input files.",
+        "Refactored into a tested, installable Python package with CI integration."
+      ],
       "stack": [
+        "Python",
+        "HTML",
+        "CSS"
+      ],
+      "skills": [
+        "Automated testing & CI",
+        "Git & GitHub",
         "Python"
       ],
-      "skills": [],
-      "ai": false
+      "ai": true
     },
     {
       "name": "Launchpad",
@@ -179,13 +282,29 @@
       "topics": [],
       "featured": true,
       "source": "065c523b5d41308b51b985e1244a9c70d729f547|Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce|",
-      "summary": "Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce",
-      "highlights": [],
-      "stack": [
-        "JavaScript"
+      "summary": "A Salesforce-based employee onboarding application designed to automate task assignment, role preparation, and progress tracking for IT consultancy firms.",
+      "highlights": [
+        "End-to-end business analysis including AS-IS/TO-BE process mapping and requirements traceability.",
+        "Implemented entirely with declarative tools, including record-triggered Flows and validation rules.",
+        "Developed custom Lightning Web Components for real-time KPI monitoring and visual progress tracking.",
+        "Includes a full documentation suite with user stories, acceptance criteria, and data models."
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "Salesforce",
+        "JavaScript",
+        "HTML & CSS",
+        "Apex",
+        "Python"
+      ],
+      "skills": [
+        "Requirements gathering",
+        "Functional analysis",
+        "User stories",
+        "Documentation & traceability",
+        "Testing & QA",
+        "Git & GitHub"
+      ],
+      "ai": true
     },
     {
       "name": "Django-CRM",
@@ -197,13 +316,27 @@
       "topics": [],
       "featured": true,
       "source": "004a60151dc8bdd2f622296d7150cc7b71354967|Customer relationship manager built with Django|",
-      "summary": "Customer relationship manager built with Django",
-      "highlights": [],
-      "stack": [
-        "Python"
+      "summary": "A customer relationship management system designed to track sales pipelines, customer records, and interaction histories.",
+      "highlights": [
+        "Features a dashboard with pipeline breakdowns, activity timelines, and stage tracking.",
+        "Includes automated testing for core workflows and access control via GitHub Actions.",
+        "Implements secure configuration using environment variables and protected destructive actions.",
+        "Supports SQLite and MySQL databases through Django ORM."
       ],
-      "skills": [],
-      "ai": false
+      "stack": [
+        "Python",
+        "Django",
+        "Bootstrap",
+        "SQLite",
+        "MySQL",
+        "HTML & CSS"
+      ],
+      "skills": [
+        "Automated testing & CI",
+        "Python",
+        "Git & GitHub"
+      ],
+      "ai": true
     }
   ]
 }
