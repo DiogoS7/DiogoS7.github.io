@@ -68,7 +68,9 @@ const CV = {
         {src:"assets/img/shots/ledger-try.webp", caption:"Try it: a slider to choose how strict the bank should be, with the outcome in plain words"},
         {src:"assets/img/shots/ledger-examples.webp", caption:"Real examples: what the checks flagged and what really happened"},
         {src:"assets/img/shots/ledger-technical.webp", caption:"For the technical reader: scorecard, tuning and the SQL behind each check"},
-        {src:"assets/img/shots/ledger-ask.webp", caption:"Ask an AI about it: an example conversation, questions to try and three-step setup"},
+        {src:"assets/img/shots/ledger-app.webp", caption:"Ask Ledger: the app with the AI built in, answering why payment 406064 was stopped, on the visitor's own Claude"},
+        {src:"assets/img/shots/ledger-app-mobile.webp", caption:"Ask Ledger on a phone"},
+        {src:"assets/img/shots/ledger-ask.webp", caption:"Ask an AI about it: the Open Ask Ledger in Claude button, an example conversation and questions to try"},
         {src:"assets/img/shots/ledger-mcp.webp", caption:"The MCP server in the MCP Inspector: explain_payment shows why payment 406064 was blocked (two checks, 65 points) and that it really was fraud"},
         {src:"assets/img/shots/ledger-dark.webp", caption:"Dark theme"},
         {src:"assets/img/shots/ledger-mobile.webp", caption:"Mobile"}
