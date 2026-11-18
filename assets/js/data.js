@@ -62,7 +62,7 @@ const CV = {
           summary:"Consultant staffing: timesheets, approvals, utilisation and a bench forecast.",
           notes:["Canvas app with Home, My Timesheet and Bench Board","Timesheet approval, Friday reminder and weekly bench alert flows","Power BI report on utilisation, bench forecast and skills, embedded in the app"],
           shots:[
-            {src:"assets/img/shots/houston-cover.webp?v=20261112", caption:"Houston: consultant staffing, timesheets and bench forecasting on Microsoft Power Platform"},
+            {src:"assets/img/shots/houston-cover.webp?v=20261118", caption:"Houston: consultant staffing, timesheets and bench forecasting on Microsoft Power Platform"},
             {src:"assets/img/shots/houston-v1-home.webp?v=20261028", caption:"Home: the week at a glance, a live Power BI tile and in-app notifications"},
             {src:"assets/img/shots/houston-v1-timesheet.webp?v=20261028", caption:"My Timesheet: log hours per engagement and submit the week for approval"},
             {src:"assets/img/shots/houston-v1-bench.webp?v=20261028", caption:"Bench Board: allocation per consultant for the next 6 weeks against their target"},
@@ -81,7 +81,7 @@ const CV = {
       skills:["Salesforce","Salesforce Flow","Lightning App Builder","Apex & LWC","JavaScript","Requirements gathering","Functional analysis","User stories","BPMN","Documentation & traceability","Testing & QA","Automated testing & CI","Git & GitHub"],
       context:"Personal project · Salesforce · 2026",
       shots:[
-        {src:"assets/img/shots/launchpad-cover.webp?v=20261105", caption:"Launchpad: employee onboarding on Salesforce, from role preparation to independence"},
+        {src:"assets/img/shots/launchpad-cover.webp?v=20261118", caption:"Launchpad: employee onboarding on Salesforce, from role preparation to independence"},
         {src:"assets/img/shots/launchpad-plan.webp?v=20261014-3", caption:"Onboarding plan with a Path, tabs, quick actions and the Mission Control component: launch countdown, next task and crew"},
         {src:"assets/img/shots/launchpad-home.webp", caption:"Command Centre: live KPIs against the 21-day target and a launch watchlist that flags plans with no buddy or Role Brief"},
         {src:"assets/img/shots/launchpad-tasks.webp", caption:"Onboarding tasks generated from templates and assigned to the new hire, manager, buddy and HR"},
