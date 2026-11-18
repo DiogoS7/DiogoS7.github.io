@@ -3,51 +3,6 @@
   "user": "DiogoS7",
   "repos": [
     {
-      "name": "Ledger",
-      "full_name": "DiogoS7/Ledger",
-      "url": "https://github.com/DiogoS7/Ledger",
-      "homepage": "https://diogos7.github.io/Ledger/",
-      "description": "How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.",
-      "language": "Python",
-      "topics": [
-        "data-analysis",
-        "data-visualization",
-        "fraud-detection",
-        "pandas",
-        "portfolio",
-        "pytest",
-        "python",
-        "sql",
-        "sqlite",
-        "window-functions"
-      ],
-      "featured": true,
-      "source": "8ad6151eb85d3f3b2a156a1d98aaea6fde18e276|How people spend, and how to catch a card thief. A year of card payments at Meridian Bank, explained in plain words. Built with Python and SQL.|data-analysis,data-visualization,fraud-detection,pandas,portfolio,pytest,python,sql,sqlite,window-functions",
-      "summary": "A data analysis project that uses a synthetic dataset of 430,000 card payments to visualize spending patterns and detect fraudulent transactions.",
-      "highlights": [
-        "Implements six automated fraud checks using SQL window functions to identify card testing, copied cards, and hijacked accounts.",
-        "Features an MCP server that allows AI assistants to query the database and explain transaction block decisions.",
-        "Includes a scoring system that evaluates the precision and recall of different fraud detection thresholds.",
-        "Automated testing with pytest ensures fraud rules trigger correctly on malicious patterns without false positives."
-      ],
-      "stack": [
-        "Python",
-        "SQL",
-        "SQLite",
-        "Pandas",
-        "JavaScript",
-        "HTML & CSS"
-      ],
-      "skills": [
-        "Automated testing & CI",
-        "Python",
-        "SQL",
-        "JavaScript",
-        "Git & GitHub"
-      ],
-      "ai": true
-    },
-    {
       "name": "DiogoS7.github.io",
       "full_name": "DiogoS7/DiogoS7.github.io",
       "url": "https://github.com/DiogoS7/DiogoS7.github.io",

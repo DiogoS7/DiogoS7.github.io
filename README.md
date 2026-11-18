@@ -39,7 +39,7 @@ Scroll and a rocket flies out from Mercury, one planet per milestone, towards th
 - **Screenshot galleries**: covers cycle through screenshots on hover; click for a gallery with arrows, thumbnails, keyboard and swipe.
 - **Light and dark themes**, following the system setting, with a manual toggle.
 - **Responsive** from phone to desktop. On phones the flight is pinned to the top of the screen.
-- **Ask my CV**: a terminal where visitors ask about my experience in plain words. A free AI model on Cloudflare Workers AI answers from this CV and my public repos only, and links to the repo it got each answer from. Built-in commands (`help`, `ls`, `open ledger`, `cat skills`, `contact`) work without the AI.
+- **Ask my CV**: a terminal where visitors ask about my experience in plain words. A free AI model on Cloudflare Workers AI answers from this CV and my public repos only, and links to the repo it got each answer from. Built-in commands (`help`, `ls`, `open levelup`, `cat skills`, `contact`) work without the AI.
 - **Self-updating repo cards**: once a week a GitHub Action has the same free AI read the README of every public repo and write a short card for it. If anything changed, it opens a pull request for me to review. Public repos that don't have a project card of their own appear under a **More on GitHub** tab, which only shows up when there is at least one.
 - **No frameworks, no build step.** Plain HTML, CSS and JavaScript, so GitHub Pages serves it as is.
 
