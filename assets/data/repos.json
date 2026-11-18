@@ -119,52 +119,6 @@
       "ai": true
     },
     {
-      "name": "LevelUp",
-      "full_name": "DiogoS7/LevelUp",
-      "url": "https://github.com/DiogoS7/LevelUp",
-      "homepage": "https://diogos7.github.io/LevelUp/",
-      "description": "Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.",
-      "language": "JavaScript",
-      "topics": [
-        "dashboard",
-        "gamification",
-        "github-pages",
-        "learning-and-development",
-        "portfolio-project",
-        "react",
-        "sales-enablement",
-        "skills-management",
-        "tailwindcss",
-        "vite"
-      ],
-      "featured": true,
-      "source": "5e76fbbed722baf7ffccf5264f083435bee4ee7f|Gamified skills platform for field sales teams: skill gaps vs role targets, in-demand skills, quests, XP, badges and weekly leagues, plus team insights for L&D (skills heatmap, launch readiness, adoption). Built with React, Tailwind and Vite.|dashboard,gamification,github-pages,learning-and-development,portfolio-project,react,sales-enablement,skills-management,tailwindcss,vite",
-      "summary": "A gamified learning platform designed for field sales teams to bridge skill gaps through short quests and manager-led course creation.",
-      "highlights": [
-        "Features a 'Course Studio' that uses AI to draft training content from source documents with a human-in-the-loop review process.",
-        "Provides managers with a dashboard for skills heatmaps, launch readiness, and adoption metrics.",
-        "Includes gamification elements such as XP, badges, streaks, and weekly leaderboards.",
-        "Managed via user stories and sprints using a GitHub project board."
-      ],
-      "stack": [
-        "React",
-        "Tailwind CSS",
-        "Vite",
-        "JavaScript",
-        "Vitest",
-        "GitHub Actions"
-      ],
-      "skills": [
-        "User stories",
-        "Documentation & traceability",
-        "Agile delivery",
-        "Testing & QA",
-        "Automated testing & CI",
-        "Git & GitHub"
-      ],
-      "ai": true
-    },
-    {
       "name": "dronyDeliv",
       "full_name": "DiogoS7/dronyDeliv",
       "url": "https://github.com/DiogoS7/dronyDeliv",
