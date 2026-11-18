@@ -81,7 +81,7 @@ const CV = {
       skills:["Salesforce","Salesforce Flow","Lightning App Builder","Apex & LWC","JavaScript","Requirements gathering","Functional analysis","User stories","BPMN","Documentation & traceability","Testing & QA","Automated testing & CI","Git & GitHub"],
       context:"Personal project · Salesforce · 2026",
       shots:[
-        {src:"assets/img/shots/launchpad-cover.webp?v=20261118", caption:"Launchpad: employee onboarding on Salesforce, from role preparation to independence"},
+        {src:"assets/img/shots/launchpad-cover.webp?v=20261118-2", caption:"Launchpad: employee onboarding on Salesforce, from role preparation to independence"},
         {src:"assets/img/shots/launchpad-plan.webp?v=20261014-3", caption:"Onboarding plan with a Path, tabs, quick actions and the Mission Control component: launch countdown, next task and crew"},
         {src:"assets/img/shots/launchpad-home.webp", caption:"Command Centre: live KPIs against the 21-day target and a launch watchlist that flags plans with no buddy or Role Brief"},
         {src:"assets/img/shots/launchpad-tasks.webp", caption:"Onboarding tasks generated from templates and assigned to the new hire, manager, buddy and HR"},
