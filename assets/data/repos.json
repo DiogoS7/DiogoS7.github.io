@@ -35,55 +35,6 @@
       "ai": true
     },
     {
-      "name": "QualityView",
-      "full_name": "DiogoS7/QualityView",
-      "url": "https://github.com/DiogoS7/QualityView",
-      "homepage": "https://diogos7.github.io/QualityView/",
-      "description": "Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.",
-      "language": "JavaScript",
-      "topics": [
-        "dashboard",
-        "framer-motion",
-        "github-pages",
-        "glassmorphism",
-        "quality-assurance",
-        "react",
-        "software-testing",
-        "tailwindcss",
-        "test-management",
-        "traceability",
-        "vite",
-        "vitest"
-      ],
-      "featured": true,
-      "source": "0795cfdf23c1eb976644273ea50cd0cb14012647|Release-quality command centre for QA: test runs, defects, requirement traceability and go/no-go readiness, in a glassmorphism React dashboard with a built-in QA agent.|dashboard,framer-motion,github-pages,glassmorphism,quality-assurance,react,software-testing,tailwindcss,test-management,traceability,vite,vitest",
-      "summary": "A quality engineering dashboard designed for QA leads to manage the full testing loop, from requirement traceability to release readiness.",
-      "highlights": [
-        "Automated test generation from user stories using AI or a no-code builder",
-        "Requirement traceability matrix linking requirements, tests, and defects",
-        "Go/No-Go readiness reporting based on execution rates and defect severity",
-        "Simulated parallel test execution with intelligent self-healing locators"
-      ],
-      "stack": [
-        "React",
-        "JavaScript",
-        "Tailwind CSS",
-        "Vite",
-        "Vitest",
-        "GitHub Actions"
-      ],
-      "skills": [
-        "Requirements gathering",
-        "Functional analysis",
-        "User stories",
-        "Documentation & traceability",
-        "Testing & QA",
-        "Automated testing & CI",
-        "Git & GitHub"
-      ],
-      "ai": true
-    },
-    {
       "name": "Houston",
       "full_name": "DiogoS7/Houston",
       "url": "https://github.com/DiogoS7/Houston",

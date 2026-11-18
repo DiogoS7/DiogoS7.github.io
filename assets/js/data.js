@@ -53,26 +53,6 @@ const CV = {
   ],
   projects: [
     /* newest release first */
-{ name:"QualityView", category:"Web", repo:"DiogoS7/QualityView",
-      url:"https://github.com/DiogoS7/QualityView", demo:"https://diogos7.github.io/QualityView/",
-      desc:"Quality engineering platform for a QA lead or delivery consultant, covering the whole testing loop: create tests from user stories with AI or a no-code builder, execute them at scale with self-healing, and report on defects, traceability and the Go/No-Go verdict. Built in React on a fictional banking release.",
-      skills:["React","JavaScript","HTML & CSS","Testing & QA","Bug tracking","Documentation & traceability","Metrics & reporting","Automated testing & CI","Git & GitHub"],
-      context:"Personal project · React · 2026",
-      shots:[
-        {src:"assets/img/shots/qualityview-cover.webp?v=10", caption:"QualityView: release quality in one glass pane"},
-        {src:"assets/img/shots/qualityview-overview.webp?v=10", caption:"Overview: progress cards, daily test execution, today's QA agenda, open defects and the Go/No-Go verdict in one view"},
-        {src:"assets/img/shots/qualityview-create.webp?v=10", caption:"Create: tests from user stories, with AI or a no-code builder"},
-        {src:"assets/img/shots/qualityview-execute.webp?v=10", caption:"Execute: at scale across remote devices, with self-healing and schedules"},
-        {src:"assets/img/shots/qualityview-runs.webp?v=10", caption:"Test runs: every test case and its latest result, filtered by result or suite"},
-        {src:"assets/img/shots/qualityview-defects.webp?v=10", caption:"Defects: search and filter by severity or status, then open a defect to see its owner and requirement"},
-        {src:"assets/img/shots/qualityview-traceability.webp?v=10", caption:"Traceability: a live requirements traceability matrix, with a gaps-only switch"},
-        {src:"assets/img/shots/qualityview-mobile.webp?v=10", caption:"Mobile: cards stack, tables scroll and the side dock becomes a floating bottom bar"},
-        {src:"assets/img/shots/qualityview-highlight-chart.webp?v=10", caption:"Test execution: passed, failed and blocked per day, with the busiest day highlighted"},
-        {src:"assets/img/shots/qualityview-highlight-gonogo.webp?v=10", caption:"Go/No-Go: six release criteria, each with its evidence"},
-        {src:"assets/img/shots/qualityview-highlight-defect.webp?v=10", caption:"Defect detail: owner, status and the requirement it traces back to"},
-        {src:"assets/img/shots/qualityview-highlight-agent.webp?v=10", caption:"QA Agent: ask about the release and jump straight to the defect, test or requirement"}
-      ],
-      details:["Fictional release R4.2 · SEPA Instant Payments, modelled on my QA work in the banking sector","Go/No-Go gates calculated from the data (execution, pass rate, open Critical defects, Must-have coverage) plus manual UAT and CAB gates","Reporting period picker: any sprint or the release to date, with every figure compared with the period before","Connected views: test runs, defects and the traceability matrix link to each other, plus Ctrl+K search across all three","QualityView QA Agent: answers from the release data with no network calls, or from Claude with your own API key","CSV export of every view and shareable views kept in the URL","React 19, Tailwind CSS v4 and Framer Motion, built with Vite; Vitest unit tests for the metrics, search, export and agent logic; GitHub Actions tests, builds and deploys to GitHub Pages"] },
 { name:"Houston", category:"Power Platform", repo:"DiogoS7/Houston",
       url:"https://github.com/DiogoS7/Houston",
       desc:"Houston, we have a solution. A consulting delivery platform on Microsoft Power Platform, shipped in releases. v1.0 Bench covers staffing: timesheets, approvals and a bench forecast across a Power App, Power Automate flows and an embedded Power BI report.",

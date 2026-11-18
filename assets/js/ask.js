@@ -17,7 +17,7 @@
     "What does Diogo do day to day?",
     "Which projects show Salesforce skills?",
     "Has he worked with automated testing?",
-    "What is QualityView?",
+    "What is Houston?",
   ];
 
   /* the tiny Markdown subset the assistant is asked to use: links, bold, "- " or "* " bullets */
@@ -43,7 +43,7 @@
       print(`Ask anything about my work in plain words, or use a command:
   <b>whoami</b>          who I am, in one line
   <b>ls</b>              list my projects
-  <b>open</b> &lt;project&gt;  open a project's repo (e.g. open qualityview)
+  <b>open</b> &lt;project&gt;  open a project's repo (e.g. open houston)
   <b>cat skills</b>      my skills by group
   <b>contact</b>         how to reach me
   <b>clear</b>           clear the screen and start a new conversation`);
