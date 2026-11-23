@@ -32,7 +32,6 @@ function renderSkills(){
   $("#skillgroups").innerHTML = CV.skills.map(g => `
     <div class="sg"><h3>${esc(g.group)}</h3><div class="chips">
       ${g.items.map(s => `<button type="button" class="chip" data-skill="${esc(s.name)}" aria-pressed="${active.has(s.name)}" title="${s.placeholder?'Placeholder: confirm or replace':''}">
-        <span class="lvl" aria-label="Level ${s.level} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=s.level?'f':''}"></i>`).join("")}</span>
         ${esc(s.name)}${s.placeholder?' *':''}<span class="n">${usage[s.name]||0}</span></button>`).join("")}
     </div></div>`).join("");
   const any = CV.skills.some(g=>g.items.some(s=>s.placeholder));

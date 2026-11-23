@@ -21,9 +21,9 @@ function cvText() {
     if (m.skills?.length) out += `  Skills used in this role: ${m.skills.join(", ")}\n`;
   }
 
-  out += "\n## Skills (level 1 = learning, 5 = uses daily)\n";
+  out += "\n## Skills\n";
   for (const g of CV.skills) {
-    out += `- ${g.group}: ${g.items.map(s => `${s.name} (${s.level})`).join(", ")}\n`;
+    out += `- ${g.group}: ${g.items.map(s => s.name).join(", ")}\n`;
   }
 
   // Worked out from the data, not left to the model: small models tend to merge similar

@@ -65,7 +65,7 @@
     },
     cat(arg){
       if (slug(arg || "") !== "skills") return print(`Try <b>cat skills</b>.`, "err");
-      print(CV.skills.map(g => `<b>${esc(g.group)}</b>\n  ${g.items.map(s => `${esc(s.name)} ${"●".repeat(s.level)}${"○".repeat(5 - s.level)}`).join("\n  ")}`).join("\n"));
+      print(CV.skills.map(g => `<b>${esc(g.group)}</b>\n  ${g.items.map(s => esc(s.name)).join("\n  ")}`).join("\n"));
     },
     contact(){
       print(CV.contact.map(c => `${esc(c.label.padEnd(10))} ${c.href ? `<a href="${esc(c.href)}" target="_blank" rel="noopener">${esc(c.value)}</a>` : esc(c.value)}`).join("\n"));

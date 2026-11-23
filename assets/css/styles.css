@@ -89,11 +89,6 @@ h2{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,38px);let
 .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:6px 12px 6px 10px;font:500 14px var(--body);cursor:pointer;transition:background .15s,border-color .15s}
 .chip:hover{border-color:var(--cobalt)}
 .chip[aria-pressed="true"]{background:var(--cobalt);border-color:var(--cobalt);color:var(--bg)}
-.lvl{display:inline-flex;gap:2px}
-.lvl i{width:5px;height:5px;border-radius:50%;background:var(--line)}
-.lvl i.f{background:var(--cobalt)}
-.chip[aria-pressed="true"] .lvl i{background:color-mix(in srgb,var(--bg) 40%,transparent)}
-.chip[aria-pressed="true"] .lvl i.f{background:var(--bg)}
 .chip .n{font:400 12px var(--mono);color:var(--muted)}
 .chip[aria-pressed="true"] .n{color:var(--bg)}
 .filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px;min-height:36px;font-size:14px;color:var(--muted)}
