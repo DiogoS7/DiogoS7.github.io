@@ -1,39 +1,7 @@
 {
-  "generated": "2026-11-13T22:19:50.300Z",
+  "generated": "2026-11-23T16:47:36.835Z",
   "user": "DiogoS7",
   "repos": [
-    {
-      "name": "DiogoS7.github.io",
-      "full_name": "DiogoS7/DiogoS7.github.io",
-      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
-      "homepage": "",
-      "description": "Personal CV interactive website",
-      "language": "JavaScript",
-      "topics": [],
-      "featured": true,
-      "source": "5953d76536a835d5578c1863045bb274c098a4f6|Personal CV interactive website|",
-      "summary": "An interactive personal CV website that visualizes career milestones through a solar-system-themed canvas animation.",
-      "highlights": [
-        "Features an 'Ask my CV' terminal powered by Cloudflare Workers AI to answer questions about professional experience.",
-        "Uses a GitHub Action to automatically generate AI-written repository cards via README analysis.",
-        "Includes skill-based project filtering and a responsive design with light and dark themes.",
-        "Built without frameworks or build steps using vanilla web technologies."
-      ],
-      "stack": [
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Cloudflare Workers AI",
-        "GitHub Actions"
-      ],
-      "skills": [
-        "Automated testing & CI",
-        "Git & GitHub",
-        "JavaScript",
-        "HTML & CSS"
-      ],
-      "ai": true
-    },
     {
       "name": "Houston",
       "full_name": "DiogoS7/Houston",
@@ -43,13 +11,13 @@
       "language": "PowerShell",
       "topics": [],
       "featured": true,
-      "source": "e9c99a431d2127f62b64937249ca5246fc7ba4e7|Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.|",
-      "summary": "A consulting delivery platform designed to manage the full engagement lifecycle, including staffing, scoping, and post-go-live support.",
+      "source": "5962b60625727381caba7234c0560bb2d3019877|Houston, we have a solution. A consulting delivery platform built on Power Apps, Power Automate and Power BI.|",
+      "summary": "A consulting delivery platform designed to manage the engagement lifecycle, including staffing, scoping, delivery, and post-go-live support.",
       "highlights": [
-        "Includes modules for consultant staffing, skills matrix tracking, and incident management with SLAs",
-        "Features automated timesheet approval flows and proactive skill-gap alerts",
-        "Integrates embedded Power BI analytics for utilization and bench forecasting",
-        "Implements a centralized Dataverse data model for consultants, clients, and engagements"
+        "Includes modules for consultant staffing, skills tracking, requirements management, and incident tracking with SLAs.",
+        "Features an integrated Dataverse data model covering Consultants, Clients, Engagements, and Skills.",
+        "Utilizes Power BI for real-time analytics on utilization, bench forecasting, and certification tracking.",
+        "Implements automated workflows for timesheet approvals, skill-gap alerts, and weekly reminders."
       ],
       "stack": [
         "Power Platform",
@@ -66,6 +34,74 @@
         "Power Platform",
         "Power BI",
         "Git & GitHub"
+      ],
+      "ai": true
+    },
+    {
+      "name": "DiogoS7.github.io",
+      "full_name": "DiogoS7/DiogoS7.github.io",
+      "url": "https://github.com/DiogoS7/DiogoS7.github.io",
+      "homepage": "",
+      "description": "Personal CV interactive website",
+      "language": "JavaScript",
+      "topics": [],
+      "featured": true,
+      "source": "73320f1c7f9f0026808050b0a693d3aa5f16d3f4|Personal CV interactive website|",
+      "summary": "An interactive personal CV website featuring a solar-system themed journey through professional milestones and an AI-powered terminal for querying experience.",
+      "highlights": [
+        "Custom canvas animation tracking career milestones via a solar-system theme",
+        "AI terminal using Cloudflare Workers AI to answer questions about professional experience",
+        "Automated GitHub Action that uses AI to generate and update project cards from READMEs",
+        "Responsive design with light/dark mode and skill-based project filtering"
+      ],
+      "stack": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Cloudflare Workers AI"
+      ],
+      "skills": [
+        "Git & GitHub",
+        "Automated testing & CI",
+        "JavaScript",
+        "HTML & CSS"
+      ],
+      "ai": true
+    },
+    {
+      "name": "Launchpad",
+      "full_name": "DiogoS7/Launchpad",
+      "url": "https://github.com/DiogoS7/Launchpad",
+      "homepage": "",
+      "description": "Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce",
+      "language": "JavaScript",
+      "topics": [],
+      "featured": true,
+      "source": "c19a9d32d12d5fedfb65fefa808aa21a865d7390|Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce|",
+      "summary": "A Salesforce application designed to automate and manage the employee onboarding process for an IT consultancy.",
+      "highlights": [
+        "Redesigned the onboarding process through AS-IS and TO-BE analysis to address specific business pain points.",
+        "Built using declarative tools, including record-triggered Flows for task generation and reminders.",
+        "Developed two custom Lightning Web Components for real-time progress tracking and KPI monitoring.",
+        "Implemented a full security model using permission sets and custom permissions to manage HR, Manager, and Employee personas."
+      ],
+      "stack": [
+        "Salesforce",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Apex",
+        "Python"
+      ],
+      "skills": [
+        "Requirements gathering",
+        "Functional analysis",
+        "User stories",
+        "Documentation & traceability",
+        "Agile delivery",
+        "Testing & QA",
+        "Power Platform",
+        "JavaScript"
       ],
       "ai": true
     },
@@ -94,47 +130,6 @@
         "Automated testing & CI",
         "Git & GitHub",
         "Python"
-      ],
-      "ai": true
-    },
-    {
-      "name": "Launchpad",
-      "full_name": "DiogoS7/Launchpad",
-      "url": "https://github.com/DiogoS7/Launchpad",
-      "homepage": "",
-      "description": "Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce",
-      "language": "JavaScript",
-      "topics": [],
-      "featured": true,
-      "source": "065c523b5d41308b51b985e1244a9c70d729f547|Employee onboarding app on Salesforce: BA documentation, data model, Flows and Agentforce|",
-      "summary": "A Salesforce-based employee onboarding application designed to automate task assignment, role preparation, and progress tracking for IT consultancy firms.",
-      "highlights": [
-        "End-to-end business analysis including AS-IS/TO-BE process mapping and requirements traceability.",
-        "All business logic is declarative (no Apex): record-triggered Flows and validation rules.",
-        "Two custom Lightning Web Components, built without Apex, for real-time KPI monitoring and visual progress tracking.",
-        "Includes a full documentation suite with user stories, acceptance criteria, and data models."
-      ],
-      "stack": [
-        "Salesforce",
-        "Salesforce Flow",
-        "Lightning Web Components",
-        "Lightning App Builder",
-        "JavaScript"
-      ],
-      "skills": [
-        "Salesforce",
-        "Salesforce Flow",
-        "Lightning App Builder",
-        "Apex & LWC",
-        "JavaScript",
-        "Requirements gathering",
-        "Functional analysis",
-        "User stories",
-        "BPMN",
-        "Documentation & traceability",
-        "Testing & QA",
-        "Automated testing & CI",
-        "Git & GitHub"
       ],
       "ai": true
     },
