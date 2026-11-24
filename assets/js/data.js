@@ -83,8 +83,8 @@ const CV = {
       context:"Personal project · Salesforce · 2026",
       shots:[
         {src:"assets/img/shots/launchpad-cover.webp?v=20261118-2", caption:"Launchpad: employee onboarding on Salesforce, from role preparation to independence"},
-        {src:"assets/img/shots/launchpad-plan.webp?v=20261014-3", caption:"Onboarding plan with a Path, tabs, quick actions and the Mission Control component: launch countdown, next task and crew"},
         {src:"assets/img/shots/launchpad-home.webp", caption:"Command Centre: live KPIs against the 21-day target and a launch watchlist that flags plans with no buddy or Role Brief"},
+        {src:"assets/img/shots/launchpad-plan.webp?v=20261014-3", caption:"Onboarding plan with a Path, tabs, quick actions and the Mission Control component: launch countdown, next task and crew"},
         {src:"assets/img/shots/launchpad-tasks.webp", caption:"Onboarding tasks generated from templates and assigned to the new hire, manager, buddy and HR"},
         {src:"assets/img/shots/launchpad-validation.webp", caption:"Validation rules enforce the plan lifecycle, from Draft to Ready to In Progress"},
         {src:"assets/img/shots/launchpad-dashboard.webp", caption:"HR dashboard, including average days to independence against the 3-week target"},
@@ -119,8 +119,7 @@ const CV = {
         {src:"assets/img/shots/crm-home.webp", caption:"Home dashboard with the pipeline broken down by stage"},
         {src:"assets/img/shots/crm-customers.webp", caption:"Customer list with status filters and sortable columns"},
         {src:"assets/img/shots/crm-customer.webp", caption:"Customer record with the stage path and activity timeline"},
-        {src:"assets/img/shots/crm-edit.webp", caption:"Edit form grouped into sections"},
-        {src:"assets/img/shots/crm-login.webp", caption:"Login page"},
+        {src:"assets/img/shots/crm-edit.webp", caption:"Edit form grouped into sections"}
       ],
       details:["Dashboard with pipeline breakdown by stage and recent activity","Customer list with filters, search, sorting and pagination","Clickable stage path (Lead → Contacted → Qualified → Customer) with auto-logged stage changes","SQLite by default, MySQL supported","Automated tests run on GitHub Actions"] },
 { name:"dronyDeliv", category:"Software", repo:"DiogoS7/dronyDeliv",
