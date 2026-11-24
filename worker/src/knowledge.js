@@ -9,7 +9,7 @@ const line = (label, value) => (value ? `${label}: ${value}\n` : "");
 
 function cvText() {
   let out = "## Profile\n";
-  out += "Name: Diogo Santos\nRole: Business analyst & QA consultant, Lisbon, Portugal\n";
+  out += "Name: Diogo Santos\nRole: BA/QA consultant (business analyst and QA consultant), Lisbon, Portugal\n";
   out += `Website: ${SITE}\n\n`;
 
   out += "## Journey (education and work, oldest first)\n";

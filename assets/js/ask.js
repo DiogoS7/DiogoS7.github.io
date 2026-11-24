@@ -50,7 +50,7 @@
     },
     whoami(){
       const now = CV.journey.find(m => m.current);
-      print(`Diogo Santos · business analyst &amp; QA consultant, Lisbon.${now ? ` Currently ${esc(now.title)} at ${esc(now.org.split(" · ")[0])}.` : ""}`);
+      print(`Diogo Santos · BA/QA consultant, Lisbon.${now ? ` Currently ${esc(now.title)} at ${esc(now.org.split(" · ")[0])}.` : ""}`);
     },
     ls(){
       print(CV.projects.map(p => `<b>${esc(p.name.padEnd(16))}</b> ${esc(p.category)}`).join("\n") +

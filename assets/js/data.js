@@ -99,7 +99,7 @@ const CV = {
       context:"Personal project · 2026",
       shots:[
         {src:"assets/img/shots/cv-cover.webp?v=20261104-3", caption:"Interactive CV: a career across the solar system"},
-        {src:"assets/img/shots/cv-hero.webp?v=20261124", caption:"Header with intro, links and quick stats"},
+        {src:"assets/img/shots/cv-hero.webp?v=20261124-2", caption:"Header with intro, links and quick stats"},
         {src:"assets/img/shots/cv-journey.webp?v=20261101-2", caption:"Journey: the rocket reaches Jupiter, my current role as a QA consultant"},
         {src:"assets/img/shots/cv-journey-next.webp?v=20261101-2", caption:"Journey: Saturn, the next mission"},
         {src:"assets/img/shots/cv-skills.webp?v=20261124", caption:"Skills filtered to Python, highlighting matching work"},
